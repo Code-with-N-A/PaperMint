@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> MP Bord 9th</title>
+    <link rel="icon" href="img/favicon-32x32.png" type="image/png" sizes="32x32">
+
+
+    <!-- Website ke Description ke liye Meta Tag -->
+    <meta name="description" content="Find and download previous year question papers for schools, colleges, and universities. Free PDF downloads for all courses and exams.">
+
+    <!-- Keywords ke liye Meta Tag -->
+    <meta name="keywords" content="school question papers, college question papers, university question papers, solved papers, previous year papers, BSc question papers, engineering question papers, exam papers download">
+
+    <!-- Website Author ke liye Meta Tag -->
+    <meta name="author" content="Your Website Name">
+
+    <!-- Charset Set Karne ke liye Meta Tag -->
+    <meta charset="UTF-8">
+
+    <!-- Responsive Design ke liye Meta Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Robots Tag (Search Engines ko Batane ke liye) -->
+    <meta name="robots" content="index, follow">
+
+    <!-- Social Media Sharing ke liye Open Graph Tags -->
+    <meta property="og:title" content="School, College, University Question Papers - Download & View">
+    <meta property="og:description" content="Free PDFs of previous year question papers for schools, colleges, and universities. Download and view easily.">
+    <meta property="og:image" content="URL_to_your_image.jpg">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tag -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="School, College, University Question Papers - Download & View">
+    <meta name="twitter:description" content="Free PDFs of previous year question papers for schools, colleges, and universities.">
+    <meta name="twitter:image" content="URL_to_your_image.jpg">
+
+    <!-- PDF.js library ko include karna -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+   
+</head>
+<!--style.css add-->
+<link rel="stylesheet" href="style.css">
+<body>
+    <header><h1> MP Bord 9th</h1></header>
+
+    <div class="container">
+        <!-- San 2022 Row -->
+        <div class="san-row">
+            <div onclick="showSemesters(2022)" id="san-2022"> 2022</div>
+            <div onclick="showSemesters(2023)" id="san-2023"> 2023</div>
+            <div onclick="showSemesters(2024)" id="san-2024"> 2024</div>
+           
+        </div>
+
+        <!-- Semester Columns for selected year -->
+        <div id="semester-container" class="semester-container"></div>
+
+        <!-- Subject Links for selected semester -->
+        <div id="subject-links" class="subject-links"></div>
+
+        <!-- PDF Viewer and Download Button -->
+        <div id="pdf-viewer"></div>
+        <a id="download-btn" href="" download>Download PDF</a>
+    </div>
+
+    <script>
+         // PDF data for Semesters and Subjects
+         const pdfData = {
+            2022: {
+                1: {
+                   'mp-board-class-9-base-line-mathematics-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-base-line-mathematics-2022.pdf',
+                   'mp-board-class-9-english-915-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-english-915-2022.pdf',
+                   'mp-board-class-9-english-921-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-english-921-2022.pdf',
+                   'mp-board-class-9-english-923-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-english-923-2022.pdf',
+                   'mp-board-class-9-english-21042022-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-english-21042022-2022.pdf',
+                   'mp-board-class-9-hindi-913-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-hindi-913-2022.pdf',
+                   'mp-board-class-9-hindi-21042022-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-hindi-21042022-2022.pdf',
+                   'mp-board-class-9-hy-art-050822-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-hy-art-050822-2022.pdf',
+                   'mp-board-class-9-hy-english-08012022-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-hy-english-08012022-2022.pdf',
+                   'mp-board-class-9-hy-mathematics-050822-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-hy-mathematics-050822-2022.pdf',
+                   'mp-board-class-9-hy-mathematics-08012022-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-hy-mathematics-08012022-2022.pdf',
+                   'mp-board-class-9-hy-sanskrit-08012022-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-hy-sanskrit-08012022-2022.pdf',
+                   'mp-board-class-9-hy-science-091222-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-hy-science-091222-2022.pdf',
+                   'mp-board-class-9-hy-social-science-08012022-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-hy-social-science-08012022-2022.pdf',
+                   'mp-board-class-9-mathematics-941-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-mathematics-941-2022.pdf',
+                   'mp-board-class-9-mathematics-943-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-mathematics-943-2022.pdf',
+                   'mp-board-class-9-sanskrit-933-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-sanskrit-933-2022.pdf',
+                   'mp-board-class-9-sanskrit-936-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-sanskrit-936-2022.pdf',
+                   'mp-board-class-9-science-951-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-science-951-2022.pdf',
+                   'mp-board-class-9-science-953-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-science-953-2022.pdf',
+                   'mp-board-class-9-science-21042022-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-science-21042022-2022.pdf',
+                   'mp-board-class-9-social-science-961-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-social-science-961-2022.pdf',
+                   'mp-board-class-9-social-science-963-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-social-science-963-2022.pdf',
+                   'mp-board-class-9-social-science-010423-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-social-science-010423-2022.pdf',
+                   'mp-board-class-9-social-science-21042022-2022.pdf': 'MP bord all/9th/22/mp-board-class-9-social-science-21042022-2022.pdf',
+                },
+            },
+               
+            2023: {
+                1: {
+                   'mp-board-class-9-electronics-and-hardware-983-2023.pdf': 'MP bord all/9th/23/mp-board-class-9-electronics-and-hardware-983-2023.pdf',
+                   'mp-board-class-9-english-922-2023.pdf': 'MP bord all/9th/23/mp-board-class-9-english-922-2023.pdf',
+                   'mp-board-class-9-english-923-2023.pdf': 'MP bord all/9th/23/mp-board-class-9-english-923-2023.pdf',
+                   'mp-board-class-9-hindi-912-2023.pdf': 'MP bord all/9th/23/mp-board-class-9-hindi-912-2023.pdf',
+                   'mp-board-class-9-hindi-913-2023.pdf': 'MP bord all/9th/23/mp-board-class-9-hindi-913-2023.pdf',
+                   'mp-board-class-9-hy-social-science-2023.pdf': 'MP bord all/9th/23/mp-board-class-9-hy-social-science-2023.pdf',
+                   'mp-board-class-9-it-ites-974-2023.pdf': 'MP bord all/9th/23/mp-board-class-9-it-ites-974-2023.pdf',
+                   'mp-board-class-9-mathematics-962-2023.pdf': 'MP bord all/9th/23/mp-board-class-9-mathematics-962-2023.pdf',
+                   'mp-board-class-9-mathematics-963-2023.pdf': 'MP bord all/9th/23/mp-board-class-9-mathematics-963-2023.pdf',
+                   'mp-board-class-9-qtr-english-911-a-2023.pdf': 'MP bord all/9th/23/mp-board-class-9-qtr-english-911-a-2023.pdf',
+                   'mp-board-class-9-qtr-english-912-b-2023.pdf': 'MP bord all/9th/23/mp-board-class-9-qtr-english-912-b-2023.pdf',
+                   'mp-board-class-9-qtr-hindi-1-901-a-2023.pdf': 'MP bord all/9th/23/mp-board-class-9-qtr-hindi-1-901-a-2023.pdf',
+                   'mp-board-class-9-qtr-hindi-300930-2023.pdf': 'MP bord all/9th/23/mp-board-class-9-qtr-hindi-300930-2023.pdf',
+                   'mp-board-class-9-qtr-mathematics-931-a-2023.pdf': 'MP bord all/9th/23/mp-board-class-9-qtr-mathematics-931-a-2023.pdf',
+                   'mp-board-class-9-qtr-mathematics-300930-2023.pdf': 'MP bord all/9th/23/mp-board-class-9-qtr-mathematics-300930-2023.pdf',
+                   'mp-board-class-9-qtr-sanskrit-921-a-2023.pdf': 'MP bord all/9th/23/mp-board-class-9-qtr-sanskrit-921-a-2023.pdf',
+                   'mp-board-class-9-qtr-sanskrit-300930-2023.pdf': 'MP bord all/9th/23/mp-board-class-9-qtr-sanskrit-300930-2023.pdf',
+                   'mp-board-class-9-qtr-social-science-951-a-2023.pdf': 'MP bord all/9th/23/mp-board-class-9-qtr-social-science-951-a-2023.pdf',
+                   'mp-board-class-9-science-952-2023.pdf': 'MP bord all/9th/23/mp-board-class-9-science-952-2023.pdf',
+                   'mp-board-class-9-science-953-2023.pdf': 'MP bord all/9th/23/mp-board-class-9-science-953-2023.pdf',
+                   'mp-board-class-9-social-science-942-2023.pdf': 'MP bord all/9th/23/mp-board-class-9-social-science-942-2023.pdf',
+                   'mp-board-class-9-social-science-943-2023.pdf': 'MP bord all/9th/23/mp-board-class-9-social-science-943-2023.pdf',
+                   'mp-board-class-9-t3-english-2023.pdf': 'MP bord all/9th/23/mp-board-class-9-t3-english-2023.pdf',
+                   'mp-board-class-9-t3-english-240624-2023.pdf': 'MP bord all/9th/23/mp-board-class-9-t3-english-240624-2023.pdf',
+                },
+            },
+                2024: {
+                1:{
+                    'mp-board-class-9-english-921-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-english-921-2024.pdf',
+                    'mp-board-class-9-english-922-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-english-922-2024.pdf',
+                    'mp-board-class-9-english-926-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-english-926-2024.pdf',
+                    'mp-board-class-9-hindi-911-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-hindi-911-2024.pdf',
+                    'mp-board-class-9-hindi-912-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-hindi-912-2024.pdf',
+                    'mp-board-class-9-hindi-913-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-hindi-913-2024.pdf',
+                    'mp-board-class-9-hindi-914-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-hindi-914-2024.pdf',
+                    'mp-board-class-9-hindi-916-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-hindi-916-2024.pdf',
+                    'mp-board-class-9-hy-it-ites-set-b-010424-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-hy-it-ites-set-b-010424-2024.pdf',
+                    'mp-board-class-9-hy-mathematics-set-a-130324-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-hy-mathematics-set-a-130324-2024.pdf',
+                    'mp-board-class-9-hy-mathematics-set-a-210924-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-hy-mathematics-set-a-210924-2024.pdf',
+                    'mp-board-class-9-hy-mathematics-set-b-010424-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-hy-mathematics-set-b-010424-2024.pdf',
+                    'mp-board-class-9-hy-sanskrit-512-set-b-010424-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-hy-sanskrit-512-set-b-010424-2024.pdf',
+                    'mp-board-class-9-hy-sanskrit-512-set-b-210924-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-hy-sanskrit-512-set-b-210924-2024.pdf',
+                    'mp-board-class-9-hy-sanskrit-set-b-130324-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-hy-sanskrit-set-b-130324-2024.pdf',
+                    'mp-board-class-9-hy-science-set-a-130324-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-hy-science-set-a-130324-2024.pdf',
+                    'mp-board-class-9-hy-social-science-set-a-130324-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-hy-social-science-set-a-130324-2024.pdf',
+                    'mp-board-class-9-hy-social-science-set-b-010424-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-hy-social-science-set-b-010424-2024.pdf',
+                    'mp-board-class-9-mathematics-961-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-mathematics-961-2024.pdf',
+                    'mp-board-class-9-mathematics-962-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-mathematics-962-2024.pdf',
+                    'mp-board-class-9-mathematics-963-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-mathematics-963-2024.pdf',
+                    'mp-board-class-9-mathematics-966-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-mathematics-966-2024.pdf',
+                    'mp-board-class-9-qtr-mathematics-set-a-101023-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-qtr-mathematics-set-a-101023-2024.pdf',
+                    'mp-board-class-9-qtr-mathematics-set-b-101023-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-qtr-mathematics-set-b-101023-2024.pdf',
+                    'mp-board-class-9-qtr-social-science-905-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-qtr-social-science-905-2024.pdf',
+                    'mp-board-class-9-retail-994-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-retail-994-2024.pdf',
+                    'mp-board-class-9-sanskrit-933-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-sanskrit-933-2024.pdf',
+                    'mp-board-class-9-science-952-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-science-952-2024.pdf',
+                    'mp-board-class-9-science-956-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-science-956-2024.pdf',
+                    'mp-board-class-9-science-191124-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-science-191124-2024.pdf',
+                    'mp-board-class-9-social-science-941-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-social-science-941-2024.pdf',
+                    'mp-board-class-9-social-science-942-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-social-science-942-2024.pdf',
+                    'mp-board-class-9-social-science-946-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-social-science-946-2024.pdf',
+                    'mp-board-class-9-t2-english-240624-2024.pdf': 'MP bord all/9th/24/mp-board-class-9-t2-english-240624-2024.pdf',
+                    
+                },
+               
+
+            },
+        
+        
+        };
+
+
+       
+    </script>
+     <!--script add-->
+     <script src="school.js"></script>
+
+     
+</body>
+</html>

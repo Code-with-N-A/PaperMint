@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> MP Bord 12th</title>
+    <link rel="icon" href="img/favicon-32x32.png" type="image/png" sizes="32x32">
+
+
+    <!-- Website ke Description ke liye Meta Tag -->
+    <meta name="description" content="Find and download previous year question papers for schools, colleges, and universities. Free PDF downloads for all courses and exams.">
+
+    <!-- Keywords ke liye Meta Tag -->
+    <meta name="keywords" content="school question papers, college question papers, university question papers, solved papers, previous year papers, BSc question papers, engineering question papers, exam papers download">
+
+    <!-- Website Author ke liye Meta Tag -->
+    <meta name="author" content="Your Website Name">
+
+    <!-- Charset Set Karne ke liye Meta Tag -->
+    <meta charset="UTF-8">
+
+    <!-- Responsive Design ke liye Meta Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Robots Tag (Search Engines ko Batane ke liye) -->
+    <meta name="robots" content="index, follow">
+
+    <!-- Social Media Sharing ke liye Open Graph Tags -->
+    <meta property="og:title" content="School, College, University Question Papers - Download & View">
+    <meta property="og:description" content="Free PDFs of previous year question papers for schools, colleges, and universities. Download and view easily.">
+    <meta property="og:image" content="URL_to_your_image.jpg">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tag -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="School, College, University Question Papers - Download & View">
+    <meta name="twitter:description" content="Free PDFs of previous year question papers for schools, colleges, and universities.">
+    <meta name="twitter:image" content="URL_to_your_image.jpg">
+
+    <!-- PDF.js library ko include karna -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+   
+</head>
+<!--style.css add-->
+<link rel="stylesheet" href="style.css">
+<body>
+    <header><h1> MP Bord 12th</h1></header>
+
+    <div class="container">
+        <!-- San 2022 Row -->
+        <div class="san-row">
+            <div onclick="showSemesters(2022)" id="san-2022"> 2022</div>
+            <div onclick="showSemesters(2023)" id="san-2023"> 2023</div>
+            <div onclick="showSemesters(2024)" id="san-2024"> 2024</div>
+           
+        </div>
+
+        <!-- Semester Columns for selected year -->
+        <div id="semester-container" class="semester-container"></div>
+
+        <!-- Subject Links for selected semester -->
+        <div id="subject-links" class="subject-links"></div>
+
+        <!-- PDF Viewer and Download Button -->
+        <div id="pdf-viewer"></div>
+        <a id="download-btn" href="" download>Download PDF</a>
+    </div>
+
+    <script>
+         // PDF data for Semesters and Subjects
+         const pdfData = {
+            2022: {
+                1: {
+                  '📒📒************ ⬇ MATHS 12TH ⬇ ************📒📒': '',
+
+
+                 'mp-board-class-12-chemistry-220-jun-2022.pdf': 'MP bord all/12TH/m/22/mp-board-class-12-chemistry-220-jun-2022.pdf',
+                 'mp-board-class-12-chemistry-e-218-2022.pdf': 'MP bord all/12TH/m/22/mp-board-class-12-chemistry-e-218-2022.pdf',
+                 'mp-board-class-12-english-e-202-2022.pdf': 'MP bord all/12TH/m/22/mp-board-class-12-english-e-202-2022.pdf',
+                 '22/mp-board-class-12-english-general-052-jun-2022.pdf': 'MP bord all/12TH/m/22/mp-board-class-12-english-general-052-jun-2022.pdf',
+                 'mp-board-class-12-higher-mathematics-e-219-2022.pdf': 'MP bord all/12TH/m/22/mp-board-class-12-higher-mathematics-e-219-2022.pdf',
+                 'mp-board-class-12-hindi-e-201-2022.pdf': 'MP bord all/12TH/m/22/mp-board-class-12-hindi-e-201-2022.pdf',
+                 'mp-board-class-12-hindi-general-051-jun-2022.pdf': 'MP bord all/12TH/m/22/mp-board-class-12-hindi-general-051-jun-2022.pdf',
+                 'mp-board-class-12-informatics-practices-e-210-2022.pdf': 'MP bord all/12TH/m/22/mp-board-class-12-informatics-practices-e-210-2022.pdf',
+                 'mp-board-class-12-physics-e-217-2022.pdf': 'MP bord all/12TH/m/22/mp-board-class-12-physics-e-217-2022.pdf',
+                  '📒📒************ ⬇ BIO 12TH ⬇ ************📒📒': '',
+                  'mp-board-class-12-biology-231-jun-2022.pdf': 'MP bord all/12TH/b/22/mp-board-class-12-biology-231-jun-2022.pdf',
+                  'mp-board-class-12-biology-e-220-2022.pdf': 'MP bord all/12TH/b/22/mp-board-class-12-biology-e-220-2022.pdf',
+                  '📒📒************ ⬇ ART 12TH ⬇ ************📒📒': '',
+                 'mp-board-class-12-geography-e-207-2022.pdf': 'MP bord all/12TH/a/22/mp-board-class-12-geography-e-207-2022.pdf',
+                 'mp-board-class-12-history-110-jun-2022.pdf': 'MP bord all/12TH/a/22/mp-board-class-12-history-110-jun-2022.pdf',
+                 'mp-board-class-12-history-e-206-2022.pdf': 'MP bord all/12TH/a/22/mp-board-class-12-history-e-206-2022.pdf',
+                 'mp-board-class-12-political-science-e-208-2022.pdf': 'MP bord all/12TH/a/22/mp-board-class-12-political-science-e-208-2022.pdf',
+                 'mp-board-class-12-sanskrit-e-204-2022.pdf': 'MP bord all/12TH/a/22/mp-board-class-12-sanskrit-e-204-2022.pdf',
+                 'mp-board-class-12-sociology-e-211-2022.pdf': 'MP bord all/12TH/a/22/mp-board-class-12-sociology-e-211-2022.pdf',
+                  '📒📒************ ⬇ COMMERCE 12TH ⬇ ************📒📒': '',
+                 'mp-board-class-12-book-keeping-and-accountancy-e-222-2022.pdf': 'MP bord all/12TH/c/22/mp-board-class-12-book-keeping-and-accountancy-e-222-2022.pdf',
+                 'mp-board-class-12-business-studies-310-jun-2022.pdf': 'MP bord all/12TH/c/22/mp-board-class-12-business-studies-310-jun-2022.pdf',
+                 'mp-board-class-12-business-studies-e-221-2022.pdf': 'MP bord all/12TH/c/22/mp-board-class-12-business-studies-e-221-2022.pdf',
+                 'mp-board-class-12-economics-e-209-2022.pdf': 'MP bord all/12TH/c/22/mp-board-class-12-economics-e-209-2022.pdf',
+                },
+            },
+               
+            2023: {
+                1: {
+                    '📒📒************ ⬇ MATHS 12TH ⬇ ************📒📒': '',
+                    'mp-board-class-12-chemistry-u-619-set-a-2023.pdf': 'MP bord all/12TH/m/23/mp-board-class-12-chemistry-u-619-set-a-2023.pdf',
+                    'mp-board-class-12-elements-of-science-and-mathematics-useful-u-624-set-a-2023.pdf': 'MP bord all/12TH/m/23/mp-board-class-12-elements-of-science-and-mathematics-useful-u-624-set-a-2023.pdf',
+                    'mp-board-class-12-english-u-602-set-a-2023.pdf': 'MP bord all/12TH/m/23/mp-board-class-12-english-u-602-set-a-2023.pdf',
+                    'mp-board-class-12-higher-mathematics-u-620-set-a-2023.pdf': 'MP bord all/12TH/m/23/mp-board-class-12-higher-mathematics-u-620-set-a-2023.pdf',
+                    'mp-board-class-12-hindi-u-601-set-a-2023.pdf': 'MP bord all/12TH/m/23/mp-board-class-12-hindi-u-601-set-a-2023.pdf',
+                    'mp-board-class-12-physics-u-618-set-b-2023.pdf': 'MP bord all/12TH/m/23/mp-board-class-12-physics-u-618-set-b-2023.pdf',
+                  '📒📒************ ⬇ BIO 12TH ⬇ ************📒📒': '',
+                  'mp-board-class-12-biology-u-621-set-a-2023.pdf': 'MP bord all/12TH/b/23/mp-board-class-12-biology-u-621-set-a-2023.pdf',
+                  '📒📒************ ⬇ ART 12TH ⬇ ************📒📒': '',
+                  'mp-board-class-12-geography-u-607-set-d-2023.pdf': 'MP bord all/12TH/a/23/mp-board-class-12-geography-u-607-set-d-2023.pdf',
+                  'mp-board-class-12-history-u-606-set-d-2023.pdf': 'MP bord all/12TH/a/23/mp-board-class-12-history-u-606-set-d-2023.pdf',
+                  'mp-board-class-12-political-science-u-608-set-a-2023.pdf': 'MP bord all/12TH/a/23/mp-board-class-12-political-science-u-608-set-a-2023.pdf',
+                  'mp-board-class-12-sociology-u-613-set-a-2023.pdf': 'MP bord all/12TH/a/23/mp-board-class-12-sociology-u-613-set-a-2023.pdf',
+                   '📒📒************ ⬇ COMMERCE 12TH ⬇ ************📒📒': '',
+                   'mp-board-class-12-book-keeping-and-accountancy-u-623-set-a-2023.pdf': 'MP bord all/12TH/c/23/mp-board-class-12-book-keeping-and-accountancy-u-623-set-a-2023.pdf',
+                   'mp-board-class-12-business-studies-u-622-set-a-2023.pdf': 'MP bord all/12TH/c/23/mp-board-class-12-business-studies-u-622-set-a-2023.pdf',
+                   'mp-board-class-12-economics-u-609-set-d-2023.pdf': 'MP bord all/12TH/c/23/mp-board-class-12-economics-u-609-set-d-2023.pdf',
+                   '📒📒************ ⬇ AG 12TH ⬇ ************📒📒': '',
+                   'mp-board-class-12-agriculture-art-and-science-e-819-set-b-2023.pdf': 'MP bord all/12TH/AG/23/mp-board-class-12-agriculture-art-and-science-e-819-set-b-2023.pdf',
+                   'mp-board-class-12-crop-production-and-horticulture-u-625-set-a-2023.pdf': 'MP bord all/12TH/AG/23/mp-board-class-12-crop-production-and-horticulture-u-625-set-a-2023.pdf',
+                   'mp-board-class-12-ele-of-animal-husb-and-milk-trade-poultry-farming-u-626-set-a-2023.pdf': 'MP bord all/12TH/AG/23/mp-board-class-12-ele-of-animal-husb-and-milk-trade-poultry-farming-u-626-set-a-2023.pdf',
+
+                },
+            },
+                2024: {
+                1:{
+                    '📒📒************ ⬇ MATHS 11TH ⬇ ************📒📒': '',
+                    'mp-board-class-12-chemistry-i0769-set-b-2024.pdf': 'MP bord all/12TH/m/24/mp-board-class-12-chemistry-i0769-set-b-2024.pdf',
+                    'mp-board-class-12-english-i0752-set-a-2024.pdf': 'MP bord all/12TH/m/24/mp-board-class-12-english-i0752-set-a-2024.pdf',
+                    'mp-board-class-12-higher-mathematics-i0770-set-a-2024.pdf': 'MP bord all/12TH/m/24/mp-board-class-12-higher-mathematics-i0770-set-a-2024.pdf',
+                    'mp-board-class-12-hindi-i0751-set-a-2024.pdf': 'MP bord all/12TH/m/24/mp-board-class-12-hindi-i0751-set-a-2024.pdf',
+                    'mp-board-class-12-indian-music-gayan-vadan-i0763-set-d-2024.pdf': 'MP bord all/12TH/m/24/mp-board-class-12-indian-music-gayan-vadan-i0763-set-d-2024.pdf',
+                    'mp-board-class-12-informatics-practices-i0760-set-a-2024.pdf': 'MP bord all/12TH/m/24/mp-board-class-12-informatics-practices-i0760-set-a-2024.pdf',
+                    'mp-board-class-12-it-ites-i0789-set-a-2024.pdf': 'MP bord all/12TH/m/24/mp-board-class-12-it-ites-i0789-set-a-2024.pdf',
+                    'mp-board-class-12-physics-i0768-set-a-2024.pdf': 'MP bord all/12TH/m/24/mp-board-class-12-physics-i0768-set-a-2024.pdf',
+                    'mp-board-class-12-supplementary-physics-is-7063-set-d-2024.pdf': 'MP bord all/12TH/m/24/mp-board-class-12-supplementary-physics-is-7063-set-d-2024.pdf',
+                    'mp-board-class-12-supplimentary-english-is-7052-set-c-2024.pdf': 'MP bord all/12TH/m/24/mp-board-class-12-supplimentary-english-is-7052-set-c-2024.pdf',
+                    'mp-board-class-12-supplimentary-higher-mathematics-is-7065-set-c-2024.pdf': 'MP bord all/12TH/m/24/mp-board-class-12-supplimentary-higher-mathematics-is-7065-set-c-2024.pdf',
+                    'mp-board-class-12-supplimentary-mathematics-is-7065-set-b-2024.pdf': 'MP bord all/12TH/m/24/mp-board-class-12-supplimentary-mathematics-is-7065-set-b-2024.pdf',
+                    '📒📒************ ⬇ BIO 12TH ⬇ ************📒📒': '',
+                    'mp-board-class-12-biology-i0771-set-a-2024.pdf': 'MP bord all/12TH/b/24/mp-board-class-12-biology-i0771-set-a-2024.pdf',
+                    'mp-board-class-12-supplimentary-biology-is-7066-set-c-2024.pdf': 'MP bord all/12TH/b/24/mp-board-class-12-supplimentary-biology-is-7066-set-c-2024.pdf',
+                    '📒📒************ ⬇ ART 12TH ⬇ ************📒📒': '',
+                    'mp-board-class-12-geography-i0757-set-b-2024.pdf': 'MP bord all/12TH/a/24/mp-board-class-12-geography-i0757-set-b-2024.pdf',
+                    'mp-board-class-12-history-i0756-set-d-2024.pdf': 'MP bord all/12TH/a/24/mp-board-class-12-history-i0756-set-d-2024.pdf',
+                    'mp-board-class-12-political-science-i0758-set-a-2024.pdf': 'MP bord all/12TH/a/24/mp-board-class-12-political-science-i0758-set-a-2024.pdf',
+                    'mp-board-class-12-sanskrit-i0753-set-a-2024.pdf': 'MP bord all/12TH/a/24/mp-board-class-12-sanskrit-i0753-set-a-2024.pdf',
+                    'mp-board-class-12-sociology-i0761-set-d-2024.pdf': 'MP bord all/12TH/a/24/mp-board-class-12-sociology-i0761-set-d-2024.pdf',
+                  
+                    '📒📒************ ⬇ COMMERCE 12TH ⬇ ************📒📒': '',
+                    'mp-board-class-12-book-keeping-and-accountancy-i0773-set-a-2024.pdf': 'MP bord all/12TH/c/24/mp-board-class-12-book-keeping-and-accountancy-i0773-set-a-2024.pdf',
+                    'mp-board-class-12-business-studies-i0772-set-c-2024.pdf': 'MP bord all/12TH/c/24/mp-board-class-12-business-studies-i0772-set-c-2024.pdf',
+                    'mp-board-class-12-economics-i0759-set-a-2024.pdf': 'MP bord all/12TH/c/24/mp-board-class-12-economics-i0759-set-a-2024.pdf',
+                    '📒📒************ ⬇ AG 12TH ⬇ ************📒📒': '',
+                    'mp-board-class-12-elements-of-science-and-mathematics-useful-i0774-set-c-2024.pdf': 'MP bord all/12TH/AG/24/mp-board-class-12-elements-of-science-and-mathematics-useful-i0774-set-c-2024.pdf',
+                    'mp-board-class-12-ele-of-animal-husb-and-milk-trade-poultry-farming-i0776-set-a-2024.pdf': 'MP bord all/12TH/AG/24/mp-board-class-12-ele-of-animal-husb-and-milk-trade-poultry-farming-i0776-set-a-2024.pdf',
+
+                },
+               
+
+            },
+        
+        
+        };
+
+
+       
+    </script>
+     <!--script add-->
+     <script src="school.js"></script>
+
+     
+</body>
+</html>

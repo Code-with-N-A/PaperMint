@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> MP Bord 8th</title>
+    <link rel="icon" href="img/favicon-32x32.png" type="image/png" sizes="32x32">
+
+
+    <!-- Website ke Description ke liye Meta Tag -->
+    <meta name="description" content="Find and download previous year question papers for schools, colleges, and universities. Free PDF downloads for all courses and exams.">
+
+    <!-- Keywords ke liye Meta Tag -->
+    <meta name="keywords" content="school question papers, college question papers, university question papers, solved papers, previous year papers, BSc question papers, engineering question papers, exam papers download">
+
+    <!-- Website Author ke liye Meta Tag -->
+    <meta name="author" content="Your Website Name">
+
+    <!-- Charset Set Karne ke liye Meta Tag -->
+    <meta charset="UTF-8">
+
+    <!-- Responsive Design ke liye Meta Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Robots Tag (Search Engines ko Batane ke liye) -->
+    <meta name="robots" content="index, follow">
+
+    <!-- Social Media Sharing ke liye Open Graph Tags -->
+    <meta property="og:title" content="School, College, University Question Papers - Download & View">
+    <meta property="og:description" content="Free PDFs of previous year question papers for schools, colleges, and universities. Download and view easily.">
+    <meta property="og:image" content="URL_to_your_image.jpg">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tag -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="School, College, University Question Papers - Download & View">
+    <meta name="twitter:description" content="Free PDFs of previous year question papers for schools, colleges, and universities.">
+    <meta name="twitter:image" content="URL_to_your_image.jpg">
+
+    <!-- PDF.js library ko include karna -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+   
+</head>
+<!--style.css add-->
+<link rel="stylesheet" href="style.css">
+<body>
+    <header><h1> MP Bord 8th</h1></header>
+
+    <div class="container">
+        <!-- San 2022 Row -->
+        <div class="san-row">
+            <div onclick="showSemesters(2022)" id="san-2022"> 2022</div>
+            <div onclick="showSemesters(2023)" id="san-2023"> 2023</div>
+            <div onclick="showSemesters(2024)" id="san-2024"> 2024</div>
+           
+        </div>
+
+        <!-- Semester Columns for selected year -->
+        <div id="semester-container" class="semester-container"></div>
+
+        <!-- Subject Links for selected semester -->
+        <div id="subject-links" class="subject-links"></div>
+
+        <!-- PDF Viewer and Download Button -->
+        <div id="pdf-viewer"></div>
+        <a id="download-btn" href="" download>Download PDF</a>
+    </div>
+
+    <script>
+         // PDF data for Semesters and Subjects
+         const pdfData = {
+            2022: {
+                1: {
+                   
+                   'pepar are not available': '',
+                },
+            },
+               
+            2023: {
+                1: {
+                   'mp-board-class-8-t1-english-240624-2023.pdf': 'MP bord all/8th/23/mp-board-class-8-t1-english-240624-2023.pdf',
+                },
+            },
+                2024: {
+                1:{
+                   'mp-board-class-8-english-130324-2024.pdf': 'MP bord all/8th/24/mp-board-class-8-english-130324-2024.pdf',
+                   'mp-board-class-8-hindi-120324-2024.pdf': 'MP bord all/8th/24/mp-board-class-8-hindi-120324-2024.pdf',
+                   'mp-board-class-8-mathematics-060824-2024.pdf': 'MP bord all/8th/24/mp-board-class-8-mathematics-060824-2024.pdf',
+                   'mp-board-class-8-mathematics-120324-2024.pdf': 'MP bord all/8th/24/mp-board-class-8-mathematics-120324-2024.pdf',
+                   'mp-board-class-8-sanskrit-140224-2024.pdf': 'MP bord all/8th/24/mp-board-class-8-sanskrit-140224-2024.pdf',
+                   'mp-board-class-8-science-130324-2024.pdf': 'MP bord all/8th/24/mp-board-class-8-science-130324-2024.pdf',
+                },
+               
+
+            },
+        
+        
+        };
+
+
+       
+    </script>
+     <!--script add-->
+     <script src="school.js"></script>
+
+     
+</body>
+</html>

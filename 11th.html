@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> MP Bord 8th</title>
+    <link rel="icon" href="img/favicon-32x32.png" type="image/png" sizes="32x32">
+
+
+    <!-- Website ke Description ke liye Meta Tag -->
+    <meta name="description" content="Find and download previous year question papers for schools, colleges, and universities. Free PDF downloads for all courses and exams.">
+
+    <!-- Keywords ke liye Meta Tag -->
+    <meta name="keywords" content="school question papers, college question papers, university question papers, solved papers, previous year papers, BSc question papers, engineering question papers, exam papers download">
+
+    <!-- Website Author ke liye Meta Tag -->
+    <meta name="author" content="Your Website Name">
+
+    <!-- Charset Set Karne ke liye Meta Tag -->
+    <meta charset="UTF-8">
+
+    <!-- Responsive Design ke liye Meta Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Robots Tag (Search Engines ko Batane ke liye) -->
+    <meta name="robots" content="index, follow">
+
+    <!-- Social Media Sharing ke liye Open Graph Tags -->
+    <meta property="og:title" content="School, College, University Question Papers - Download & View">
+    <meta property="og:description" content="Free PDFs of previous year question papers for schools, colleges, and universities. Download and view easily.">
+    <meta property="og:image" content="URL_to_your_image.jpg">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tag -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="School, College, University Question Papers - Download & View">
+    <meta name="twitter:description" content="Free PDFs of previous year question papers for schools, colleges, and universities.">
+    <meta name="twitter:image" content="URL_to_your_image.jpg">
+
+    <!-- PDF.js library ko include karna -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+   
+</head>
+<!--style.css add-->
+<link rel="stylesheet" href="style.css">
+<body>
+    <header><h1> MP Bord 8th</h1></header>
+
+    <div class="container">
+        <!-- San 2022 Row -->
+        <div class="san-row">
+            <div onclick="showSemesters(2022)" id="san-2022"> 2022</div>
+            <div onclick="showSemesters(2023)" id="san-2023"> 2023</div>
+            <div onclick="showSemesters(2024)" id="san-2024"> 2024</div>
+           
+        </div>
+
+        <!-- Semester Columns for selected year -->
+        <div id="semester-container" class="semester-container"></div>
+
+        <!-- Subject Links for selected semester -->
+        <div id="subject-links" class="subject-links"></div>
+
+        <!-- PDF Viewer and Download Button -->
+        <div id="pdf-viewer"></div>
+        <a id="download-btn" href="" download>Download PDF</a>
+    </div>
+
+    <script>
+         // PDF data for Semesters and Subjects
+         const pdfData = {
+            2022: {
+                1: {
+                  '📒📒************ ⬇ MATHS 11TH ⬇ ************📒📒': '',
+
+
+                  'mp-board-class-11-chemistry-153-2022.pdf': 'MP bord all/11th/m/22/mp-board-class-11-chemistry-153-2022.pdf',
+                  'mp-board-class-11-chemistry-154-2022.pdf': 'MP bord all/11th/m/22/mp-board-class-11-chemistry-154-2022.pdf',
+                  'mp-board-class-11-english-123-2022.pdf': 'MP bord all/11th/m/22/mp-board-class-11-english-123-2022.pdf',
+                  'mp-board-class-11-hindi-113-2022.pdf': 'MP bord all/11th/m/22/mp-board-class-11-hindi-113-2022.pdf',
+                  'mp-board-class-11-hindi-114-2022.pdf': 'MP bord all/11th/m/22/mp-board-class-11-hindi-114-2022.pdf',
+                  'mp-board-class-11-hy-chemistry-08012022-2022.pdf': 'MP bord all/11th/m/22/mp-board-class-11-hy-chemistry-08012022-2022.pdf',
+                  'mp-board-class-11-hy-english-08012022-2022.pdf': 'MP bord all/11th/m/22/mp-board-class-11-hy-english-08012022-2022.pdf',
+                  'mp-board-class-11-hy-english-set-a-170423-2022.pdf': 'MP bord all/11th/m/22/mp-board-class-11-hy-english-set-a-170423-2022.pdf',
+                  'mp-board-class-11-hy-hindi-08012022-2022.pdf': 'MP bord all/11th/m/22/mp-board-class-11-hy-hindi-08012022-2022.pdf',
+                  'mp-board-class-11-hy-hindi-general-050822-2022.pdf': 'MP bord all/11th/m/22/mp-board-class-11-hy-hindi-general-050822-2022.pdf',
+                  'mp-board-class-11-hy-mathematics-08012022-2022.pdf': 'MP bord all/11th/m/22/mp-board-class-11-hy-mathematics-08012022-2022.pdf',
+                  'mp-board-class-11-hy-physics-05032022-2022.pdf': 'MP bord all/11th/m/22/mp-board-class-11-hy-physics-05032022-2022.pdf',
+                  'mp-board-class-11-mathematics-173-2022.pdf': 'MP bord all/11th/m/22/mp-board-class-11-mathematics-173-2022.pdf',
+                  'mp-board-class-11-physics-143-2022.pdf': 'MP bord all/11th/m/22/mp-board-class-11-physics-143-2022.pdf',
+                  'mp-board-class-11-physics-144-2022.pdf': 'MP bord all/11th/m/22/mp-board-class-11-physics-144-2022.pdf',
+                  'mp-board-class-11-qtr-chemistry-050822-2022.pdf': 'MP bord all/11th/m/22/mp-board-class-11-qtr-chemistry-050822-2022.pdf',
+                  'mp-board-class-11-qtr-hindi-050822-2022.pdf': 'MP bord all/11th/m/22/mp-board-class-11-qtr-hindi-050822-2022.pdf',
+                  'mp-board-class-11-qtr-physics-050822-2022.pdf': 'MP bord all/11th/m/22/mp-board-class-11-qtr-physics-050822-2022.pdf',
+
+                  '📒📒************ ⬇ BIO 11TH ⬇ ************📒📒': '',
+
+                  'mp-board-class-11-biology-163-2022.pdf': 'MP bord all/11th/s/22/mp-board-class-11-biology-163-2022.pdf',
+                  'mp-board-class-11-biology-164-2022.pdf': 'MP bord all/11th/s/22/mp-board-class-11-biology-164-2022.pdf',
+                  'mp-board-class-11-hy-biology-08012022-2022.pdf': 'MP bord all/11th/s/22/mp-board-class-11-hy-biology-08012022-2022.pdf',
+                  'mp-board-class-11-qtr-biology-050822-2022.pdf': 'MP bord all/11th/s/22/mp-board-class-11-qtr-biology-050822-2022.pdf',
+
+                  '📒📒************ ⬇ ART 11TH ⬇ ************📒📒': '',
+                  'mp-board-class-11-history-224-2022.pdf': 'MP bord all/11th/a/22/mp-board-class-11-history-224-2022.pdf',
+                  'mp-board-class-11-political-science-243-2022.pdf': 'MP bord all/11th/a/22/mp-board-class-11-political-science-243-2022.pdf',
+
+                  '📒📒************ ⬇ COMMERCE 11TH ⬇ ************📒📒': '',
+                  'mp-board-class-11-hy-accountancy-08012022-2022.pdf': 'MP bord all/11th/c/22/mp-board-class-11-hy-accountancy-08012022-2022.pdf',
+                  'mp-board-class-11-hy-economics-arts-and-commerce-08012022-2022.pdf': 'MP bord all/11th/c/22/mp-board-class-11-hy-economics-arts-and-commerce-08012022-2022.pdf',
+
+
+
+
+                },
+            },
+               
+            2023: {
+                1: {
+                    '📒📒************ ⬇ MATHS 11TH ⬇ ************📒📒': '',
+
+                  'mp-board-class-11-chemistry-11041-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-chemistry-11041-2023.pdf',
+                  'mp-board-class-11-chemistry-11042-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-chemistry-11042-2023.pdf',
+                  'mp-board-class-11-chemistry-11045-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-chemistry-11045-2023.pdf',
+                  'mp-board-class-11-english-11011-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-english-11011-2023.pdf',
+                  'mp-board-class-11-english-11012-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-english-11012-2023.pdf',
+                  'mp-board-class-11-english-11013-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-english-11013-2023.pdf',
+                  'mp-board-class-11-english-11015-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-english-11015-2023.pdf',
+                  'mp-board-class-11-english-240624-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-english-240624-2023.pdf',
+                  'mp-board-class-11-english-v2-240624-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-english-v2-240624-2023.pdf',
+                  'mp-board-class-11-hindi-11001-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-hindi-11001-2023.pdf',
+                  'mp-board-class-11-hindi-11002-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-hindi-11002-2023.pdf',
+                  'mp-board-class-11-hindi-11003-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-hindi-11003-2023.pdf',
+                  'mp-board-class-11-hy-chemistry-010423-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-hy-chemistry-010423-2023.pdf',
+                  'mp-board-class-11-hy-chemistry-set-b-010424-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-hy-chemistry-set-b-010424-2023.pdf',
+                  'mp-board-class-11-hy-chemistry-set-b-200224-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-hy-chemistry-set-b-200224-2023.pdf',
+                  'mp-board-class-11-hy-english-set-a-200224-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-hy-english-set-a-200224-2023.pdf',
+                  'mp-board-class-11-hy-english-set-b-010424-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-hy-english-set-b-010424-2023.pdf',
+                  'mp-board-class-11-hy-english-set-b-230324-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-hy-english-set-b-230324-2023.pdf',
+                  'mp-board-class-11-hy-hindi-set-a-010424-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-hy-hindi-set-a-010424-2023.pdf',
+                  'mp-board-class-11-hy-hindi-set-a-170423-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-hy-hindi-set-a-170423-2023.pdf',
+                  'mp-board-class-11-hy-hindi-set-a-200224-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-hy-hindi-set-a-200224-2023.pdf',
+                  'mp-board-class-11-hy-hindi-set-b-230324-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-hy-hindi-set-b-230324-2023.pdf',
+                  'mp-board-class-11-hy-mathematics-010423-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-hy-mathematics-010423-2023.pdf',
+                  'mp-board-class-11-hy-physics-010423-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-hy-physics-010423-2023.pdf',
+                  'mp-board-class-11-hy-physics-060423-set-2-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-hy-physics-060423-set-2-2023.pdf',
+                  'mp-board-class-11-hy-physics-200224-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-hy-physics-200224-2023.pdf',
+                  'mp-board-class-11-hy-physics-set-a-200224-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-hy-physics-set-a-200224-2023.pdf',
+                  'mp-board-class-11-hy-physics-set-b-010424-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-hy-physics-set-b-010424-2023.pdf',
+                  'mp-board-class-11-mathematics-11021-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-mathematics-11021-2023.pdf',
+                  'mp-board-class-11-mathematics-11022-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-mathematics-11022-2023.pdf',
+                  'mp-board-class-11-mathematics-11023-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-mathematics-11023-2023.pdf',
+                  'mp-board-class-11-physics-11031-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-physics-11031-2023.pdf',
+                  'mp-board-class-11-physics-11032-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-physics-11032-2023.pdf',
+                  'mp-board-class-11-qtr-chemistry-1113-b-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-qtr-chemistry-1113-b-2023.pdf',
+                  'mp-board-class-11-qtr-english-1103-a-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-qtr-english-1103-a-2023.pdf',
+                  'mp-board-class-11-qtr-english-1104-b-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-qtr-english-1104-b-2023.pdf',
+                  'mp-board-class-11-qtr-english-set-b-200224-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-qtr-english-set-b-200224-2023.pdf',
+                  'mp-board-class-11-qtr-hindi-1-1101-a-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-qtr-hindi-1-1101-a-2023.pdf',
+                  'mp-board-class-11-qtr-hindi-1-1102-b-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-qtr-hindi-1-1102-b-2023.pdf',
+                  'mp-board-class-11-qtr-mathematics-1122-b-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-qtr-mathematics-1122-b-2023.pdf',
+                  'mp-board-class-11-qtr-physics-1109-b-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-qtr-physics-1109-b-2023.pdf',
+                  'mp-board-class-11-qtr-physics-set-a-200923-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-qtr-physics-set-a-200923-2023.pdf',
+                  'mp-board-class-11-t1-english-240624-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-t1-english-240624-2023.pdf',
+                  'mp-board-class-11-term-1-mathematics-010423-2023.pdf': 'MP bord all/11th/m/23/mp-board-class-11-term-1-mathematics-010423-2023.pdf',
+
+                  '📒📒************ ⬇ BIO 11TH ⬇ ************📒📒': '',
+                  'mp-board-class-11-biology-11052-2023.pdf': 'MP bord all/11th/s/23/mp-board-class-11-biology-11052-2023.pdf',
+
+                  '📒📒************ ⬇ ART 11TH ⬇ ************📒📒': '',
+                   'mp-board-class-11-geography-11113-2023.pdf': 'MP bord all/11th/a/23/mp-board-class-11-geography-11113-2023.pdf',
+                   'mp-board-class-11-history-11103-2023.pdf': 'MP bord all/11th/a/23/mp-board-class-11-history-11103-2023.pdf',
+                   'mp-board-class-11-hy-geography-set-a-170423-2023.pdf': 'MP bord all/11th/a/23/mp-board-class-11-hy-geography-set-a-170423-2023.pdf',
+                   'mp-board-class-11-hy-political-science-set-a-170423-2023.pdf': 'MP bord all/11th/a/23/mp-board-class-11-hy-political-science-set-a-170423-2023.pdf',
+                   'mp-board-class-11-political-science-11123-2023.pdf': 'MP bord all/11th/a/23/mp-board-class-11-political-science-11123-2023.pdf',
+                   'mp-board-class-11-qtr-geography-1143-a-2023.pdf': 'MP bord all/11th/a/23/mp-board-class-11-qtr-geography-1143-a-2023.pdf',
+                   'mp-board-class-11-qtr-geography-1145-b-2023.pdf': 'MP bord all/11th/a/23/mp-board-class-11-qtr-geography-1145-b-2023.pdf',
+                   'mp-board-class-11-qtr-political-science-1147-a-2023.pdf': 'MP bord all/11th/a/23/mp-board-class-11-qtr-political-science-1147-a-2023.pdf',
+                   'mp-board-class-11-qtr-political-science-1149-b-2023.pdf': 'MP bord all/11th/a/23/mp-board-class-11-qtr-political-science-1149-b-2023.pdf',
+                   'mp-board-class-11-sanskrit-11211-2023.pdf': 'MP bord all/11th/a/23/mp-board-class-11-sanskrit-11211-2023.pdf',
+                   'mp-board-class-11-sociology-11131-2023.pdf': 'MP bord all/11th/a/23/mp-board-class-11-sociology-11131-2023.pdf',
+
+                   '📒📒************ ⬇ COMMERCE 11TH ⬇ ************📒📒': '',
+                   'mp-board-class-11-economics-11093-2023.pdf': 'MP bord all/11th/c/23/mp-board-class-11-economics-11093-2023.pdf',
+                   'mp-board-class-11-hy-accontancy-vanijya-sghps-027-2023.pdf': 'MP bord all/11th/c/23/mp-board-class-11-hy-accontancy-vanijya-sghps-027-2023.pdf',
+                   'mp-board-class-11-hy-business-studies-010423-2023.pdf': 'MP bord all/11th/c/23/mp-board-class-11-hy-business-studies-010423-2023.pdf',
+                   'mp-board-class-11-hy-economics-commerce-and-arts-set-a-170423-2023.pdf': 'MP bord all/11th/c/23/mp-board-class-11-hy-economics-commerce-and-arts-set-a-170423-2023.pdf',
+                   'mp-board-class-11-hy-economics-set-b-010424-2023.pdf': 'MP bord all/11th/c/23/mp-board-class-11-hy-economics-set-b-010424-2023.pdf',
+                   'mp-board-class-11-hy-economics-set-b-230324-2023.pdf': 'MP bord all/11th/c/23/mp-board-class-11-hy-economics-set-b-230324-2023.pdf',
+                   'mp-board-class-11-hy-economic-vanijya-sghps-025-2023.pdf': 'MP bord all/11th/c/23/mp-board-class-11-hy-economic-vanijya-sghps-025-2023.pdf',
+                   'mp-board-class-11-hy-economic-vanijya-sghps-026-2023.pdf': 'MP bord all/11th/c/23/mp-board-class-11-hy-economic-vanijya-sghps-026-2023.pdf',
+                   'mp-board-class-11-qtr-economics-arts-and-commerce-1123-a-2023.pdf': 'MP bord all/11th/c/23/mp-board-class-11-qtr-economics-arts-and-commerce-1123-a-2023.pdf', 
+                },
+            },
+                2024: {
+                1:{
+                    '📒📒************ ⬇ MATHS 11TH ⬇ ************📒📒': '',
+
+                    'mp-board-class-11-chemistry-11043-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-chemistry-11043-2024.pdf',
+                    'mp-board-class-11-chemistry-11046-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-chemistry-11046-2024.pdf',
+                    'mp-board-class-11-chemistry-210224-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-chemistry-210224-2024.pdf',
+                    'mp-board-class-11-chemistry-210924-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-chemistry-210924-2024.pdf',
+                    'mp-board-class-11-chemistry-210924-v2-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-chemistry-210924-v2-2024.pdf',
+                    'mp-board-class-11-english-11011-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-english-11011-2024.pdf',
+                    'mp-board-class-11-english-11012-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-english-11012-2024.pdf',
+                    'mp-board-class-11-english-11013-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-english-11013-2024.pdf',
+                    'mp-board-class-11-english-11016-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-english-11016-2024.pdf',
+                    'mp-board-class-11-higher-mathematics-210224-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-higher-mathematics-210224-2024.pdf',
+                    'mp-board-class-11-higher-mathematics-210924-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-higher-mathematics-210924-2024.pdf',
+                    'mp-board-class-11-hindi-11002-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-hindi-11002-2024.pdf',
+                    'mp-board-class-11-hindi-11003-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-hindi-11003-2024.pdf',
+                    'mp-board-class-11-hy-mathematics-set-a-200224-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-hy-mathematics-set-a-200224-2024.pdf',
+                    'mp-board-class-11-hy-mathematics-set-b-010424-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-hy-mathematics-set-b-010424-2024.pdf',
+                    'mp-board-class-11-it-ites-11302-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-it-ites-11302-2024.pdf',
+                    'mp-board-class-11-mathematics-11021-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-mathematics-11021-2024.pdf',
+                    'mp-board-class-11-mathematics-11022-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-mathematics-11022-2024.pdf',
+                    'mp-board-class-11-mathematics-11023-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-mathematics-11023-2024.pdf',
+                    'mp-board-class-11-mathematics-11026-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-mathematics-11026-2024.pdf',
+                    'mp-board-class-11-physics-11008-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-physics-11008-2024.pdf',
+                    'mp-board-class-11-physics-11031-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-physics-11031-2024.pdf',
+                    'mp-board-class-11-physics-11032-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-physics-11032-2024.pdf',
+                    'mp-board-class-11-physics-11033-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-physics-11033-2024.pdf',
+                    'mp-board-class-11-physics-11035-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-physics-11035-2024.pdf',
+                    'mp-board-class-11-physics-11036-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-physics-11036-2024.pdf',
+                    'mp-board-class-11-physics-210224-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-physics-210224-2024.pdf',
+                    'mp-board-class-11-qtr-chemistry-set-a-200923-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-qtr-chemistry-set-a-200923-2024.pdf',
+                    'mp-board-class-11-qtr-english-1103-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-qtr-english-1103-2024.pdf',
+                    'mp-board-class-11-qtr-english-set-a-200923-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-qtr-english-set-a-200923-2024.pdf',
+                    'mp-board-class-11-qtr-hindi-1101-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-qtr-hindi-1101-2024.pdf',
+                    'mp-board-class-11-qtr-hindi-200923-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-qtr-hindi-200923-2024.pdf',
+                    'mp-board-class-11-qtr-hindi-set-b-101023-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-qtr-hindi-set-b-101023-2024.pdf',
+                    'mp-board-class-11-qtr-mathematics-set-a-200224-2024.pdf': 'MP bord all/11th/m/24/mp-board-class-11-qtr-mathematics-set-a-200224-2024.pdf',
+
+                    '📒📒************ ⬇ BIO 11TH ⬇ ************📒📒': '',
+                    'mp-board-class-11-hy-biology-set-a-010424-2024.pdf': 'MP bord all/11th/s/24/mp-board-class-11-hy-biology-set-a-010424-2024.pdf',
+                    'mp-board-class-11-hy-biology-set-a-200224-2024.pdf': 'MP bord all/11th/s/24/mp-board-class-11-hy-biology-set-a-200224-2024.pdf',
+
+                    '📒📒************ ⬇ ART 11TH ⬇ ************📒📒': '',
+                    'mp-board-class-11-geography-11081-2024.pdf': 'MP bord all/11th/a/24/mp-board-class-11-geography-11081-2024.pdf',
+                    'mp-board-class-11-hy-history-set-b-010424-2024.pdf': 'MP bord all/11th/a/24/mp-board-class-11-hy-history-set-b-010424-2024.pdf',
+                    'mp-board-class-11-hy-political-science-set-b-010424-2024.pdf': 'MP bord all/11th/a/24/mp-board-class-11-hy-political-science-set-b-010424-2024.pdf',
+                    'mp-board-class-11-hy-sociology-set-b-010424-2024.pdf': 'MP bord all/11th/a/24/mp-board-class-11-hy-sociology-set-b-010424-2024.pdf',
+                    'mp-board-class-11-political-science-11091-2024.pdf': 'MP bord all/11th/a/24/mp-board-class-11-political-science-11091-2024.pdf',
+                    'mp-board-class-11-qtr-biology-set-a-200923-2024.pdf': 'MP bord all/11th/a/24/mp-board-class-11-qtr-biology-set-a-200923-2024.pdf',
+                    'mp-board-class-11-qtr-geography-set-a-200224-2024.pdf': 'MP bord all/11th/a/24/mp-board-class-11-qtr-geography-set-a-200224-2024.pdf',
+                    'mp-board-class-11-qtr-political-science-set-a-200224-2024.pdf': 'MP bord all/11th/a/24/mp-board-class-11-qtr-political-science-set-a-200224-2024.pdf',
+                    'mp-board-class-11-qtr-political-science-set-b-101023-2024.pdf': 'MP bord all/11th/a/24/mp-board-class-11-qtr-political-science-set-b-101023-2024.pdf',
+
+                    '📒📒************ ⬇ COMMERCE 11TH ⬇ ************📒📒': '',
+
+                    'mp-board-class-11-economics-11007-2024.pdf': 'MP bord all/11th/c/24/mp-board-class-11-economics-11007-2024.pdf',
+                    'mp-board-class-11-economics-11061-2024.pdf': 'MP bord all/11th/c/24/mp-board-class-11-economics-11061-2024.pdf',
+                    'mp-board-class-11-hy-accountancy-set-a-010424-2024.pdf': 'MP bord all/11th/c/24/mp-board-class-11-hy-accountancy-set-a-010424-2024.pdf',
+                    'mp-board-class-11-hy-accountancy-set-b-230324-2024.pdf': 'MP bord all/11th/c/24/mp-board-class-11-hy-accountancy-set-b-230324-2024.pdf',
+                    'mp-board-class-11-hy-business-studies-010424-2024.pdf': 'MP bord all/11th/c/24/mp-board-class-11-hy-business-studies-010424-2024.pdf',
+                    'mp-board-class-11-qtr-business-studies-1112-2024.pdf': 'MP bord all/11th/c/24/mp-board-class-11-qtr-business-studies-1112-2024.pdf',
+                    'mp-board-class-11-qtr-economics-arts-and-commerce-1111-2024.pdf': 'MP bord all/11th/c/24/mp-board-class-11-qtr-economics-arts-and-commerce-1111-2024.pdf',
+                    'mp-board-class-11-qtr-economics-arts-and-commerce-set-b-200224-2024.pdf': 'MP bord all/11th/c/24/mp-board-class-11-qtr-economics-arts-and-commerce-set-b-200224-2024.pdf',
+                    
+
+                },
+               
+
+            },
+        
+        
+        };
+
+
+       
+    </script>
+     <!--script add-->
+     <script src="school.js"></script>
+
+     
+</body>
+</html>

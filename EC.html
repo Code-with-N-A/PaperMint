@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EC Viewer for Semesters</title>
+    <link rel="icon" href="img/favicon-32x32.png" type="image/png" sizes="32x32">
+
+
+    <!-- Website ke Description ke liye Meta Tag -->
+    <meta name="description" content="Find and download previous year question papers for schools, colleges, and universities. Free PDF downloads for all courses and exams.">
+
+    <!-- Keywords ke liye Meta Tag -->
+    <meta name="keywords" content="school question papers, college question papers, university question papers, solved papers, previous year papers, BSc question papers, engineering question papers, exam papers download">
+
+    <!-- Website Author ke liye Meta Tag -->
+    <meta name="author" content="Your Website Name">
+
+    <!-- Charset Set Karne ke liye Meta Tag -->
+    <meta charset="UTF-8">
+
+    <!-- Responsive Design ke liye Meta Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Robots Tag (Search Engines ko Batane ke liye) -->
+    <meta name="robots" content="index, follow">
+
+    <!-- Social Media Sharing ke liye Open Graph Tags -->
+    <meta property="og:title" content="School, College, University Question Papers - Download & View">
+    <meta property="og:description" content="Free PDFs of previous year question papers for schools, colleges, and universities. Download and view easily.">
+    <meta property="og:image" content="URL_to_your_image.jpg">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tag -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="School, College, University Question Papers - Download & View">
+    <meta name="twitter:description" content="Free PDFs of previous year question papers for schools, colleges, and universities.">
+    <meta name="twitter:image" content="URL_to_your_image.jpg">
+
+    <!-- PDF.js library ko include karna -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+   
+</head>
+<!--style.css add-->
+<link rel="stylesheet" href="style.css">
+<body>
+    <header><h1>Electronics and Communication Engineering</h1></header>
+
+    <div class="container">
+        <!-- San 2022 Row -->
+        <div class="san-row">
+            <div onclick="showSemesters(2022)" id="san-2022">San 2022</div>
+            <div onclick="showSemesters(2023)" id="san-2023">San 2023</div>
+            <div onclick="showSemesters(2024)" id="san-2024">San 2024</div>
+           
+           
+        </div>
+
+        <!-- Semester Columns for selected year -->
+        <div id="semester-container" class="semester-container"></div>
+
+        <!-- Subject Links for selected semester -->
+        <div id="subject-links" class="subject-links"></div>
+
+        <!-- PDF Viewer and Download Button -->
+        <div id="pdf-viewer"></div>
+        <a id="download-btn" href="" download>Download PDF</a>
+    </div>
+
+    <script>
+          // PDF data for Semesters and Subjects
+        const pdfData = {
+            2022: {
+                1: {
+                    'bt-1002-mathematics-1-jun-2022.pdf': 'EC22/1stand2nd/bt-1002-mathematics-1-jun-2022.pdf',
+                    'bt-205-basic-computer-engineering-nov-2022.pdf': 'EC22/1stand2nd/bt-205-basic-computer-engineering-nov-2022.pdf',
+                    'bt-205-basic-computer-engineering-jun-2022.pdf': 'EC22/1stand2nd/bt-205-basic-computer-engineering-jun-2022.pdf',
+                    'bt-204-basic-civil-engineering-and-engineering-mechanics-nov-2022.pdf': 'EC22/1stand2nd/bt-204-basic-civil-engineering-and-engineering-mechanics-nov-2022.pdf',
+                    'bt-204-basic-civil-engineering-and-engineering-mechanics-jun-2022.pdf': 'EC22/1stand2nd/bt-204-basic-civil-engineering-and-engineering-mechanics-jun-2022.pdf',
+                    'bt-203-basic-mechanical-engineering-nov-2022.pdf': 'EC22/1stand2nd/bt-203-basic-mechanical-engineering-nov-2022.pdf',
+                    'bt-203-basic-mechanical-engineering-jun-2022.pdf': 'EC22/1stand2nd/bt-203-basic-mechanical-engineering-jun-2022.pdf',
+                    'bt-202-mathematics-2-nov-2022.pdf': 'EC22/1stand2nd/bt-202-mathematics-2-nov-2022.pdf',
+                    'bt-202-mathematics-2-jun-2022.pdf': 'EC22/1stand2nd/bt-202-mathematics-2-jun-2022.pdf',
+                    'bt-201-engineering-physics-nov-2022.pdf': 'EC22/1stand2nd/bt-201-engineering-physics-nov-2022.pdf',
+                    'bt-201-engineering-physics-jun-2022.pdf': 'EC22/1stand2nd/bt-201-engineering-physics-jun-2022.pdf',
+                    'bt-105-engineering-graphics-nov-2022.pdf': 'EC22/1stand2nd/bt-105-engineering-graphics-nov-2022.pdf',
+                    'bt-105-engineering-graphics-jun-2022.pdf': 'EC22/1stand2nd/bt-105-engineering-graphics-jun-2022.pdf',
+                    'EC22/1stand2nd/bt-104-basic-electrical-and-electronics-engineering-nov-2022.pdf': 'EC22/1stand2nd/bt-104-basic-electrical-and-electronics-engineering-nov-2022.pdf',
+                    'bt-104-basic-electrical-and-electronics-engineering-jun-2022.pdf': 'EC22/1stand2nd/bt-104-basic-electrical-and-electronics-engineering-jun-2022.pdf',
+                    'bt-103-english-for-communication-nov-2022.pdf': 'EC22/1stand2nd/bt-103-english-for-communication-nov-2022.pdf',
+                    'bt-103-english-for-communication-jun-2022.pdf': 'EC22/1stand2nd/bt-103-english-for-communication-jun-2022.pdf',
+                    'bt-102-mathematics-jun-2022.pdf': 'EC22/1stand2nd/bt-102-mathematics-jun-2022.pdf',
+                    'bt-102-mathematics-1-nov-2022.pdf': 'EC22/1stand2nd/bt-102-mathematics-1-nov-2022.pdf',
+                    'bt-101-engineering-chemistry-nov-2022.pdf': 'EC22/1stand2nd/bt-101-engineering-chemistry-nov-2022.pdf',
+                    'bt-101-engineering-chemistry-jun-2022.pdf': 'EC22/1stand2nd/bt-101-engineering-chemistry-jun-2022.pdf',
+                   
+                },
+                2: {
+                    
+                    'bt-1002-mathematics-1-jun-2022.pdf': 'EC22/1stand2nd/bt-1002-mathematics-1-jun-2022.pdf',
+                    'bt-205-basic-computer-engineering-nov-2022.pdf': 'EC22/1stand2nd/bt-205-basic-computer-engineering-nov-2022.pdf',
+                    'bt-205-basic-computer-engineering-jun-2022.pdf': 'EC22/1stand2nd/bt-205-basic-computer-engineering-jun-2022.pdf',
+                    'bt-204-basic-civil-engineering-and-engineering-mechanics-nov-2022.pdf': 'EC22/1stand2nd/bt-204-basic-civil-engineering-and-engineering-mechanics-nov-2022.pdf',
+                    'bt-204-basic-civil-engineering-and-engineering-mechanics-jun-2022.pdf': 'EC22/1stand2nd/bt-204-basic-civil-engineering-and-engineering-mechanics-jun-2022.pdf',
+                    'bt-203-basic-mechanical-engineering-nov-2022.pdf': 'EC22/1stand2nd/bt-203-basic-mechanical-engineering-nov-2022.pdf',
+                    'bt-203-basic-mechanical-engineering-jun-2022.pdf': 'EC22/1stand2nd/bt-203-basic-mechanical-engineering-jun-2022.pdf',
+                    'bt-202-mathematics-2-nov-2022.pdf': 'EC22/1stand2nd/bt-202-mathematics-2-nov-2022.pdf',
+                    'bt-202-mathematics-2-jun-2022.pdf': 'EC22/1stand2nd/bt-202-mathematics-2-jun-2022.pdf',
+                    'bt-201-engineering-physics-nov-2022.pdf': 'EC22/1stand2nd/bt-201-engineering-physics-nov-2022.pdf',
+                    'bt-201-engineering-physics-jun-2022.pdf': 'EC22/1stand2nd/bt-201-engineering-physics-jun-2022.pdf',
+                    'bt-105-engineering-graphics-nov-2022.pdf': 'EC22/1stand2nd/bt-105-engineering-graphics-nov-2022.pdf',
+                    'bt-105-engineering-graphics-jun-2022.pdf': 'EC22/1stand2nd/bt-105-engineering-graphics-jun-2022.pdf',
+                    'EC22/1stand2nd/bt-104-basic-electrical-and-electronics-engineering-nov-2022.pdf': 'EC22/1stand2nd/bt-104-basic-electrical-and-electronics-engineering-nov-2022.pdf',
+                    'bt-104-basic-electrical-and-electronics-engineering-jun-2022.pdf': 'EC22/1stand2nd/bt-104-basic-electrical-and-electronics-engineering-jun-2022.pdf',
+                    'bt-103-english-for-communication-nov-2022.pdf': 'EC22/1stand2nd/bt-103-english-for-communication-nov-2022.pdf',
+                    'bt-103-english-for-communication-jun-2022.pdf': 'EC22/1stand2nd/bt-103-english-for-communication-jun-2022.pdf',
+                    'bt-102-mathematics-jun-2022.pdf': 'EC22/1stand2nd/bt-102-mathematics-jun-2022.pdf',
+                    'bt-102-mathematics-1-nov-2022.pdf': 'EC22/1stand2nd/bt-102-mathematics-1-nov-2022.pdf',
+                    'bt-101-engineering-chemistry-nov-2022.pdf': 'EC22/1stand2nd/bt-101-engineering-chemistry-nov-2022.pdf',
+                    'bt-101-engineering-chemistry-jun-2022.pdf': 'EC22/1stand2nd/bt-101-engineering-chemistry-jun-2022.pdf',
+                   
+                },
+                3: {
+                    'btech-3-sem-mathematics-3-nov-2022.pdf': 'EC22/3rd/btech-3-sem-mathematics-3-nov-2022.pdf',
+                    'ec-302-electronic-measurements-and-instrumentation-nov-2022.pdf': 'EC22/3rd/ec-302-electronic-measurements-and-instrumentation-nov-2022.pdf',
+                    'ec-303-digital-system-design-nov-2022.pdf': 'EC22/3rd/ec-303-digital-system-design-nov-2022.pdf',
+                    'ec-304-electronic-devices-nov-2022.pdf': 'EC22/3rd/ec-304-electronic-devices-nov-2022.pdf',
+                    'ec-305-network-analysis-nov-2022.pdf': 'EC22/3rd/ec-305-network-analysis-nov-2022.pdf',
+                },
+                4:{
+                    'ec-402-signal-and-system-jun-2022.pdf': 'EC22/4th/ec-402-signal-and-system-jun-2022.pdf',
+                    'ec-403-analog-communication-jun-2022.pdf': 'EC22/4th/ec-403-analog-communication-jun-2022.pdf',
+                    'ec-404-control-system-jun-2022.pdf': 'EC22/4th/ec-404-control-system-jun-2022.pdf',
+                    'ec-405-analog-circuits-jun-2022.pdf': 'EC22/4th/ec-405-analog-circuits-jun-2022.pdf',
+                    'es-401-ab-au-ce-cm-ec-me-rm-energy-and-environmental-engineering-jun-2022.pdf': 'EC22/4th/es-401-ab-au-ce-cm-ec-me-rm-energy-and-environmental-engineering-jun-2022.pdf',
+                },
+                5:{
+                    'ec-501-microprocessor-and-its-applications-nov-2022.pdf': 'EC22/5th/ec-501-microprocessor-and-its-applications-nov-2022.pdf',
+                    'ec-502-digital-communication-nov-2022.pdf': 'EC22/5th/ec-502-digital-communication-nov-2022.pdf',
+                    'ec-503-a-communication-network-and-transmission-lines-nov-2022.pdf': 'EC22/5th/ec-503-a-communication-network-and-transmission-lines-nov-2022.pdf',
+                    'ec-503-b-mobile-communication-nov-2022.pdf': 'EC22/5th/ec-503-b-mobile-communication-nov-2022.pdf',
+                    'ec-504-b-computer-system-organization-nov-2022.pdf': 'EC22/5th/ec-504-b-computer-system-organization-nov-2022.pdf',
+                    
+                },
+                6:{
+                    'ec-601-digital-signal-processing-may-2022.pdf': 'EC22/6th/ec-601-digital-signal-processing-may-2022.pdf',
+                    'ec-602-antenna-and-wave-propagation-may-2022.pdf': 'EC22/6th/ec-602-antenna-and-wave-propagation-may-2022.pdf',
+                    'ec-603-a-data-communication-may-2022.pdf': 'EC22/6th/ec-603-a-data-communication-may-2022.pdf',
+                    'ec-604-a-microcontroller-and-embedded-system-may-2022.pdf': 'EC22/6th/ec-604-a-microcontroller-and-embedded-system-may-2022.pdf',
+                    'ec-604-b-bio-medical-electronics-may-2022.pdf': 'EC22/6th/ec-604-b-bio-medical-electronics-may-2022.pdf',
+                   
+                },
+                7:{
+                    'pepar are not available 7th semster': '',
+
+                },
+                8:{
+                    'ec-801-optical-fiber-communication-may-2022.pdf': 'EC22/8th/ec-801-optical-fiber-communication-may-2022.pdf',
+                    'ec-802-b-wireless-communications-may-2022.pdf': 'EC22/8th/ec-802-b-wireless-communications-may-2022.pdf',
+                    'ec-803-a-wireless-networks-may-2022.pdf': 'EC22/8th/ec-803-a-wireless-networks-may-2022.pdf',
+                  
+                },
+                // Add other semesters and subjects similarly
+            },
+            2023: {
+                1: {
+                    'bt-101-engineering-chemistry-dec-2023.pdf': 'ES23/1stand2d/bt-101-engineering-chemistry-dec-2023.pdf',
+                    'bt-101-engineering-chemistry-jun-2023.pdf': 'ES23/1stand2d/bt-101-engineering-chemistry-jun-2023.pdf',
+                    'bt-102-mathematics-1-dec-2023.pdf': 'ES23/1stand2d/bt-102-mathematics-1-dec-2023.pdf',
+                    'bt-102-mathematics-1-jun-2023.pdf': 'ES23/1stand2d/bt-102-mathematics-1-jun-2023.pdf',
+                    'bt-103-english-for-communication-dec-2023.pdf': 'ES23/1stand2d/bt-103-english-for-communication-dec-2023.pdf',
+                    'bt-103-english-for-communication-jun-2023.pdf': 'ES23/1stand2d/bt-103-english-for-communication-jun-2023.pdf',
+                    'ES23/1stand2d/bt-104-basic-electrical-and-electronics-engineering-dec-2023.pdf': 'ES23/1stand2d/bt-104-basic-electrical-and-electronics-engineering-dec-2023.pdf',
+                    'bt-104-basic-electrical-and-electronics-engineering-jun-2023.pdf': 'ES23/1stand2d/bt-104-basic-electrical-and-electronics-engineering-jun-2023.pdf',
+                    'bt-105-engineering-graphics-dec-2023.pdf': 'ES23/1stand2d/bt-105-engineering-graphics-dec-2023.pdf',
+                    'bt-105-engineering-graphics-jun-2023.pdf': 'ES23/1stand2d/bt-105-engineering-graphics-jun-2023.pdf',
+                    'bt-201-engineering-physics-dec-2023.pdf': 'ES23/1stand2d/bt-201-engineering-physics-dec-2023.pdf',
+                    'bt-201-engineering-physics-jun-2023.pdf': 'ES23/1stand2d/bt-201-engineering-physics-jun-2023.pdf',
+                    'bt-202-mathematics-2-dec-2023.pdf': 'ES23/1stand2d/bt-202-mathematics-2-dec-2023.pdf',
+                    'bt-202-mathematics-2-jun-2023.pdf': 'ES23/1stand2d/bt-202-mathematics-2-jun-2023.pdf',
+                    'bt-202-mathematics-2-jun-2023-solution.pdf': 'ES23/1stand2d/bt-202-mathematics-2-jun-2023-solution.pdf',
+                    'bt-203-basic-mechanical-engineering-dec-2023.pdf': 'ES23/1stand2d/bt-203-basic-mechanical-engineering-dec-2023.pdf',
+                    'bt-203-basic-mechanical-engineering-jun-2023.pdf': 'ES23/1stand2d/bt-203-basic-mechanical-engineering-jun-2023.pdf',
+                    'bt-204-basic-civil-engineering-and-engineering-mechanics-dec-2023.pdf': 'ES23/1stand2d/bt-204-basic-civil-engineering-and-engineering-mechanics-dec-2023.pdf',
+                    'bt-204-basic-civil-engineering-and-engineering-mechanics-jun-2023.pdf': 'ES23/1stand2d/bt-204-basic-civil-engineering-and-engineering-mechanics-jun-2023.pdf',
+                    'bt-205-basic-computer-engineering-dec-2023.pdf': 'ES23/1stand2d/bt-205-basic-computer-engineering-dec-2023.pdf',
+                    'bt-205-basic-computer-engineering-jun-2023.pdf': 'ES23/1stand2d/bt-205-basic-computer-engineering-jun-2023.pdf',
+                    
+                },
+                2: {
+                    'bt-101-engineering-chemistry-dec-2023.pdf': 'ES23/1stand2d/bt-101-engineering-chemistry-dec-2023.pdf',
+                    'bt-101-engineering-chemistry-jun-2023.pdf': 'ES23/1stand2d/bt-101-engineering-chemistry-jun-2023.pdf',
+                    'bt-102-mathematics-1-dec-2023.pdf': 'ES23/1stand2d/bt-102-mathematics-1-dec-2023.pdf',
+                    'bt-102-mathematics-1-jun-2023.pdf': 'ES23/1stand2d/bt-102-mathematics-1-jun-2023.pdf',
+                    'bt-103-english-for-communication-dec-2023.pdf': 'ES23/1stand2d/bt-103-english-for-communication-dec-2023.pdf',
+                    'bt-103-english-for-communication-jun-2023.pdf': 'ES23/1stand2d/bt-103-english-for-communication-jun-2023.pdf',
+                    'ES23/1stand2d/bt-104-basic-electrical-and-electronics-engineering-dec-2023.pdf': 'ES23/1stand2d/bt-104-basic-electrical-and-electronics-engineering-dec-2023.pdf',
+                    'bt-104-basic-electrical-and-electronics-engineering-jun-2023.pdf': 'ES23/1stand2d/bt-104-basic-electrical-and-electronics-engineering-jun-2023.pdf',
+                    'bt-105-engineering-graphics-dec-2023.pdf': 'ES23/1stand2d/bt-105-engineering-graphics-dec-2023.pdf',
+                    'bt-105-engineering-graphics-jun-2023.pdf': 'ES23/1stand2d/bt-105-engineering-graphics-jun-2023.pdf',
+                    'bt-201-engineering-physics-dec-2023.pdf': 'ES23/1stand2d/bt-201-engineering-physics-dec-2023.pdf',
+                    'bt-201-engineering-physics-jun-2023.pdf': 'ES23/1stand2d/bt-201-engineering-physics-jun-2023.pdf',
+                    'bt-202-mathematics-2-dec-2023.pdf': 'ES23/1stand2d/bt-202-mathematics-2-dec-2023.pdf',
+                    'bt-202-mathematics-2-jun-2023.pdf': 'ES23/1stand2d/bt-202-mathematics-2-jun-2023.pdf',
+                    'bt-202-mathematics-2-jun-2023-solution.pdf': 'ES23/1stand2d/bt-202-mathematics-2-jun-2023-solution.pdf',
+                    'bt-203-basic-mechanical-engineering-dec-2023.pdf': 'ES23/1stand2d/bt-203-basic-mechanical-engineering-dec-2023.pdf',
+                    'bt-203-basic-mechanical-engineering-jun-2023.pdf': 'ES23/1stand2d/bt-203-basic-mechanical-engineering-jun-2023.pdf',
+                    'bt-204-basic-civil-engineering-and-engineering-mechanics-dec-2023.pdf': 'ES23/1stand2d/bt-204-basic-civil-engineering-and-engineering-mechanics-dec-2023.pdf',
+                    'bt-204-basic-civil-engineering-and-engineering-mechanics-jun-2023.pdf': 'ES23/1stand2d/bt-204-basic-civil-engineering-and-engineering-mechanics-jun-2023.pdf',
+                    'bt-205-basic-computer-engineering-dec-2023.pdf': 'ES23/1stand2d/bt-205-basic-computer-engineering-dec-2023.pdf',
+                    'bt-205-basic-computer-engineering-jun-2023.pdf': 'ES23/1stand2d/bt-205-basic-computer-engineering-jun-2023.pdf',
+                    
+                
+                   
+                },
+                3: {
+                    'ec-302-electronic-measurements-and-instrumentation-dec-2023.pdf': 'ES23/3rd/ec-302-electronic-measurements-and-instrumentation-dec-2023.pdf',
+                    'ec-302-electronic-measurements-and-instrumentation-ec-302-jun-2023.pdf': 'ES23/3rd/ec-302-electronic-measurements-and-instrumentation-ec-302-jun-2023.pdf',
+                    'ec-303-digital-system-design-dec-2023.pdf': 'ES23/3rd/ec-303-digital-system-design-dec-2023.pdf',
+                    'ec-303-digital-system-design-jun-2023.pdf': 'ES23/3rd/ec-303-digital-system-design-jun-2023.pdf',
+                    'ec-304-electronic-devices-jun-2023.pdf': 'ES23/3rd/ec-304-electronic-devices-jun-2023.pdf',
+                    'ec-305-network-analysis-jun-2023.pdf': 'ES23/3rd/ec-305-network-analysis-jun-2023.pdf',
+                    'ec-io-304-electronic-devices-dec-2023.pdf': 'ES23/3rd/ec-io-304-electronic-devices-dec-2023.pdf',
+                    'ec-io-305-network-analysis-dec-2023.pdf': 'ES23/3rd/ec-io-305-network-analysis-dec-2023.pdf',
+   
+                },
+                4: {
+                    'ad-ag-an-at-ci-cs-ct-co-ee-ex-ft-it-mi-mm-bt401-mathematics-3-jun-2023.pdf': 'ES23/4th/ad-ag-an-at-ci-cs-ct-co-ee-ex-ft-it-mi-mm-bt401-mathematics-3-jun-2023.pdf',
+                    'ec-402-signal-and-system-jun-2023.pdf': 'ES23/4th/ec-402-signal-and-system-jun-2023.pdf',
+                    'ec-402-signal-and-system-nov-2023.pdf': 'ES23/4th/ec-402-signal-and-system-nov-2023.pdf',
+                    'ec-403-analog-communication-jun-2023.pdf': 'ES23/4th/ec-403-analog-communication-jun-2023.pdf',
+                    'ec-403-analog-communication-nov-2023.pdf': 'ES23/4th/ec-403-analog-communication-nov-2023.pdf',
+                    'ec-404-control-system-jun-2023.pdf': 'ES23/4th/ec-404-control-system-jun-2023.pdf',
+                    'ec-404-control-system-nov-2023.pdf': 'ES23/4th/ec-404-control-system-nov-2023.pdf',
+                    'ec-405-analog-circuits-jun-2023.pdf': 'ES23/4th/ec-405-analog-circuits-jun-2023.pdf',
+                    'ec-405-analog-circuits-nov-2023.pdf': 'ES23/4th/ec-405-analog-circuits-nov-2023.pdf',
+                    
+                },
+                5: {
+                    'ec-501-microprocessor-and-its-applications-ec-501-may-2023.pdf': 'ES23/5th/ec-501-microprocessor-and-its-applications-ec-501-may-2023.pdf',
+                    'ec-501-microprocessor-and-its-applications-nov-2023.pdf': 'ES23/5th/ec-501-microprocessor-and-its-applications-nov-2023.pdf',
+                    'ec-502-digital-communication-nov-2023.pdf': 'ES23/5th/ec-502-digital-communication-nov-2023.pdf',
+                    'ec-503-a-transmission-lines-nov-2023.pdf': 'ES23/5th/ec-503-a-transmission-lines-nov-2023.pdf',
+                    'ec-503-b-mobile-communication-nov-2023.pdf': 'ES23/5th/ec-503-b-mobile-communication-nov-2023.pdf',
+                    'ec-504-b-computer-system-organization-nov-2023.pdf': 'ES23/5th/ec-504-b-computer-system-organization-nov-2023.pdf',
+                },
+                6: {
+                    'ec-601-digital-signal-processing-may-2023.pdf': 'ES23/6th/ec-601-digital-signal-processing-may-2023.pdf',
+                    'ec-602-antenna-and-wave-propagation-may-2023.pdf': 'ES23/6th/ec-602-antenna-and-wave-propagation-may-2023.pdf',
+                    'ec-603-a-data-communication-may-2023.pdf': 'ES23/6th/ec-603-a-data-communication-may-2023.pdf',
+                    'ec-603-b-cmos-design-may-2023.pdf': 'ES23/6th/ec-603-b-cmos-design-may-2023.pdf',
+                    'ec-604-a-microcontroller-and-embedded-system-may-2023.pdf': 'ES23/6th/ec-604-a-microcontroller-and-embedded-system-may-2023.pdf',
+                    'ec-604-b-bio-medical-electronics-may-2023.pdf': 'ES23/6th/ec-604-b-bio-medical-electronics-may-2023.pdf',
+                    'ec-604-c-power-electronics-may-2023.pdf': 'ES23/6th/ec-604-c-power-electronics-may-2023.pdf',
+                   
+                },
+                7: {
+                    'ec-703-c-probability-theory-and-stochastic-processor-nov-2023.pdf': 'ES23/7th/ec-703-c-probability-theory-and-stochastic-processor-nov-2023.pdf',
+                    'ec-703-b-internet-of-things-nov-2023.pdf': 'ES23/7th/ec-703-b-internet-of-things-nov-2023.pdf',
+                    'ec-702-b-information-theory-and-coding-nov-2023.pdf': 'ES23/7th/ec-702-b-information-theory-and-coding-nov-2023.pdf',
+                    'ec-702-a-microwave-engineering-nov-2023.pdf': 'ES23/7th/ec-702-a-microwave-engineering-nov-2023.pdf',
+                    'ec-701-vlsi-design-nov-2023.pdf': 'ES23/7th/ec-701-vlsi-design-nov-2023.pdf',
+                },
+                8: {
+                    'ec-801-optical-fiber-communication-may-2023.pdf': 'ES23/8th/ec-801-optical-fiber-communication-may-2023.pdf',
+                    'ec-802-a-ai-and-signal-processing-may-2023.pdf': 'ES23/8th/ec-802-a-ai-and-signal-processing-may-2023.pdf',
+                    'ec-803-a-wireless-networks-may-2023.pdf': 'ES23/8th/ec-803-a-wireless-networks-may-2023.pdf',
+                },
+            },
+            2024: {
+                1:{
+                    'bt-105-engineering-graphics-jun-2024.pdf': 'ES24/1st&2d/bt-105-engineering-graphics-jun-2024.pdf',
+                    'bt-205-basic-computer-engineering-jun-2024.pdf': 'ES24/1st&2d/bt-205-basic-computer-engineering-jun-2024.pdf',
+                    'cb-202-statistical-method-jun-2024.pdf': 'ES24/1st&2d/cb-202-statistical-method-jun-2024.pdf',
+                    
+                },
+                2: {
+                    'bt-105-engineering-graphics-jun-2024.pdf': 'ES24/1st&2d/bt-105-engineering-graphics-jun-2024.pdf',
+                    'bt-205-basic-computer-engineering-jun-2024.pdf': 'ES24/1st&2d/bt-205-basic-computer-engineering-jun-2024.pdf',
+                    'cb-202-statistical-method-jun-2024.pdf': 'ES24/1st&2d/cb-202-statistical-method-jun-2024.pdf',
+                
+                },
+                3: {
+                    'pepar are not available 7th semster': '',
+                   
+                },
+                4: {
+                    'ec-402-signal-and-system-jun-2024.pdf': 'ES24/4th/ec-402-signal-and-system-jun-2024.pdf',
+                    'ec-404-control-system-jun-2024.pdf': 'ES24/4th/ec-404-control-system-jun-2024.pdf',
+                   
+                },
+                5: {
+                    'ec-501-microprocessor-and-its-application-may-2024.pdf': 'ES24/5th/ec-501-microprocessor-and-its-application-may-2024.pdf',
+
+                },
+                6: {
+                    'ec-601-digital-signal-processing-may-2024.pdf': 'ES24/6th/ec-601-digital-signal-processing-may-2024.pdf',
+                    'ec-602-antenna-and-wave-propagation-may-2024.pdf': 'ES24/6th/ec-602-antenna-and-wave-propagation-may-2024.pdf',
+                    'ec-803-a-wireless-networks-may-2024.pdf': 'ES24/6th/ec-803-a-wireless-networks-may-2024.pdf',
+                   
+                },
+                7: {
+                    'pepar are not available 7th semster': '',
+                },
+                8: {
+                    'ec-801-optical-fiber-communication-may-2024.pdf': 'ES24/8th/ec-801-optical-fiber-communication-may-2024.pdf',
+                    'ec-802-b-wireless-communications-may-2024.pdf': 'ES24/8th/ec-802-b-wireless-communications-may-2024.pdf',
+
+                },
+
+            },
+        
+           
+        };
+       
+    </script>
+     <!--script add-->
+     <script src="script.js"></script>
+     
+</body>
+</html>

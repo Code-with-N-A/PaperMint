@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMPUTER SCIENCE</title>
+    <link rel="icon" href="img/favicon-32x32.png" type="image/png" sizes="32x32">
+
+
+    <!-- Website ke Description ke liye Meta Tag -->
+    <meta name="description" content="Find and download previous year question papers for schools, colleges, and universities. Free PDF downloads for all courses and exams.">
+
+    <!-- Keywords ke liye Meta Tag -->
+    <meta name="keywords" content="school question papers, college question papers, university question papers, solved papers, previous year papers, BSc question papers, engineering question papers, exam papers download">
+
+    <!-- Website Author ke liye Meta Tag -->
+    <meta name="author" content="Your Website Name">
+
+    <!-- Charset Set Karne ke liye Meta Tag -->
+    <meta charset="UTF-8">
+
+    <!-- Responsive Design ke liye Meta Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Robots Tag (Search Engines ko Batane ke liye) -->
+    <meta name="robots" content="index, follow">
+
+    <!-- Social Media Sharing ke liye Open Graph Tags -->
+    <meta property="og:title" content="School, College, University Question Papers - Download & View">
+    <meta property="og:description" content="Free PDFs of previous year question papers for schools, colleges, and universities. Download and view easily.">
+    <meta property="og:image" content="URL_to_your_image.jpg">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tag -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="School, College, University Question Papers - Download & View">
+    <meta name="twitter:description" content="Free PDFs of previous year question papers for schools, colleges, and universities.">
+    <meta name="twitter:image" content="URL_to_your_image.jpg">
+
+    <!-- PDF.js library ko include karna -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+   
+</head>
+<!--style.css add-->
+<link rel="stylesheet" href="style.css">
+<body>
+    <header><h1>COMPUTER SCIENCE</h1></header>
+
+    <div class="container">
+        <!-- San 2022 Row -->
+        <div class="san-row">
+            <div onclick="showSemesters(2022)" id="san-2022">San 2022</div>
+            <div onclick="showSemesters(2023)" id="san-2023">San 2023</div>
+            <div onclick="showSemesters(2024)" id="san-2024">San 2024</div>
+           
+        </div>
+
+        <!-- Semester Columns for selected year -->
+        <div id="semester-container" class="semester-container"></div>
+
+        <!-- Subject Links for selected semester -->
+        <div id="subject-links" class="subject-links"></div>
+
+        <!-- PDF Viewer and Download Button -->
+        <div id="pdf-viewer"></div>
+        <a id="download-btn" href="" download>Download PDF</a>
+    </div>
+
+    <script>
+         // PDF data for Semesters and Subjects
+         const pdfData = {
+            2022: {
+                1: {
+                    'bt-101-engineering-chemistry-jun-2022.pdf': 'cse22/bt-101-engineering-chemistry-jun-2022.pdf',
+                    'bt-102-mathematics-1-nov-2022.pdf': 'cse22/bt-102-mathematics-1-nov-2022.pdf',
+                    'bt-103-english-for-communication-jun-2022.pdf': 'cse22/bt-103-english-for-communication-jun-2022.pdf',
+                    'bt-103-english-for-communication-nov-2022.pdf': 'cse22/bt-103-english-for-communication-nov-2022.pdf',
+                    'bt-104-basic-electrical-and-electronics-engineering-jun-2022.pdf': 'cse22/bt-104-basic-electrical-and-electronics-engineering-jun-2022.pdf',
+                    'bt-104-basic-electrical-and-electronics-engineering-nov-2022.pdf': 'cse22/bt-104-basic-electrical-and-electronics-engineering-nov-2022.pdf',
+                    'bt-105-engineering-graphics-jun-2022.pdf': 'cse22/bt-105-engineering-graphics-jun-2022.pdf',
+                    'bt-105-engineering-graphics-nov-2022.pdf': 'cse22/bt-105-engineering-graphics-nov-2022.pdf',
+                    'bt-201-engineering-physics-jun-2022.pdf': 'cse22/bt-201-engineering-physics-jun-2022.pdf',
+                    'bt-201-engineering-physics-nov-2022.pdf': 'cse22/bt-201-engineering-physics-nov-2022.pdf',
+                    'bt-202-mathematics-2-jun-2022.pdf': 'cse22/bt-202-mathematics-2-jun-2022.pdf',
+                    'bt-202-mathematics-2-nov-2022.pdf': 'cse22/bt-202-mathematics-2-nov-2022.pdf',
+                    'bt-203-basic-mechanical-engineering-jun-2022.pdf': 'cse22/bt-203-basic-mechanical-engineering-jun-2022.pdf',
+                    'bt-203-basic-mechanical-engineering-nov-2022.pdf': 'cse22/bt-203-basic-mechanical-engineering-nov-2022.pdf',
+                    'bt-204-basic-civil-engineering-and-engineering-mechanics-jun-2022.pdf': 'cse22/bt-204-basic-civil-engineering-and-engineering-mechanics-jun-2022.pdf',
+                    'bt-204-basic-civil-engineering-and-engineering-mechanics-nov-2022.pdf': 'cse22/bt-204-basic-civil-engineering-and-engineering-mechanics-nov-2022.pdf',
+                    'bt-205-basic-computer-engineering-jun-2022.pdf': 'cse22/bt-205-basic-computer-engineering-jun-2022.pdf',
+                    'bt-205-basic-computer-engineering-nov-2022.pdf': 'cse22/bt-205-basic-computer-engineering-nov-2022.pdf',
+                    'bt-1002-mathematics-1-jun-2022.pdf': 'cse22/bt-1002-mathematics-1-jun-2022.pdf',
+                    
+                    // Add up to 19 subjects for Semester 1
+                },
+                2: {
+                    'bt-101-engineering-chemistry-jun-2022.pdf': 'cse22/2nd/bt-101-engineering-chemistry-jun-2022.pdf',
+                    'bt-101-engineering-chemistry-nov-2022.pdf': 'cse22/2nd/bt-101-engineering-chemistry-nov-2022.pdf',
+                    'bt-102-mathematics-1-nov-2022.pdf': 'cse22/2nd/bt-102-mathematics-1-nov-2022.pdf',
+                    'bt-102-mathematics-jun-2022.pdf': 'cse22/2nd/bt-102-mathematics-jun-2022.pdf',
+                    'bt-103-english-for-communication-jun-2022.pdf': 'cse22/2nd/bt-103-english-for-communication-jun-2022.pdf',
+                    'bt-103-english-for-communication-nov-2022.pdf': 'cse22/2nd/bt-103-english-for-communication-nov-2022.pdf',
+                    'bt-104-basic-electrical-and-electronics-engineering-jun-2022.pdf': 'cse22/2nd/bt-104-basic-electrical-and-electronics-engineering-jun-2022.pdf',
+                    'bt-104-basic-electrical-and-electronics-engineering-nov-2022.pdf': 'cse22/2nd/bt-104-basic-electrical-and-electronics-engineering-nov-2022.pdf',
+                    'bt-105-engineering-graphics-jun-2022.pdf': 'cse22/2nd/bt-105-engineering-graphics-jun-2022.pdf',
+                    'bt-105-engineering-graphics-nov-2022.pdf': 'cse22/2nd/bt-105-engineering-graphics-nov-2022.pdf',
+                    'bt-201-engineering-physics-jun-2022.pdf': 'cse22/2nd/bt-201-engineering-physics-jun-2022.pdf',
+                    'bt-201-engineering-physics-nov-2022.pdf': 'cse22/2nd/bt-201-engineering-physics-nov-2022.pdf',
+                    'bt-202-mathematics-2-jun-2022.pdf': 'cse22/2nd/bt-202-mathematics-2-jun-2022.pdf',
+                    'bt-202-mathematics-2-nov-2022.pdf': 'cse22/2nd/bt-202-mathematics-2-nov-2022.pdf',
+                    'bt-203-basic-mechanical-engineering-jun-2022.pdf': 'cse22/2nd/bt-203-basic-mechanical-engineering-jun-2022.pdf',
+                    'bt-203-basic-mechanical-engineering-nov-2022.pdf': 'cse22/2nd/bt-203-basic-mechanical-engineering-nov-2022.pdf',
+                    'bt-204-basic-civil-engineering-and-engineering-mechanics-jun-2022.pdf': 'cse22/2nd/bt-204-basic-civil-engineering-and-engineering-mechanics-jun-2022.pdf',
+                    'bt-204-basic-civil-engineering-and-engineering-mechanics-nov-2022.pdf': 'cse22/2nd/bt-204-basic-civil-engineering-and-engineering-mechanics-nov-2022.pdf',
+                    'bt-205-basic-computer-engineering-jun-2022.pdf': 'cse22/2nd/bt-205-basic-computer-engineering-jun-2022.pdf',
+                    'bt-205-basic-computer-engineering-nov-2022.pdf': 'cse22/2nd/bt-205-basic-computer-engineering-nov-2022.pdf',
+                    'bt-1002-mathematics-1-jun-2022.pdf': 'cse22/2nd/bt-1002-mathematics-1-jun-2022.pdf',
+                   
+                    // Add up to 5 subjects for Semester 2
+                },
+                3: {
+                    'ag-an-at-csit-ci-cs-ct-co-ee-ex-ft-it-mi-mm-es-301-energy-and-environmental-engineering-nov-2022.pdf': 'cse22/3rd/ag-an-at-csit-ci-cs-ct-co-ee-ex-ft-it-mi-mm-es-301-energy-and-environmental-engineering-nov-2022.pdf',
+                    'bt-301-mathematics-3-nov-2022.pdf': 'cse22/3rd/bt-301-mathematics-3-nov-2022.pdf',
+                    'btech-3-sem-mathematics-3-nov-2022.pdf': 'cse22/3rd/btech-3-sem-mathematics-3-nov-2022.pdf',
+                    'ci-cs-ct-co-it-302-discrete-structure-nov-2022.pdf': 'cse22/3rd/ci-cs-ct-co-it-302-discrete-structure-nov-2022.pdf',
+                    'cs-ct-co-303-data-structures-nov-2022.pdf': 'cse22/3rd/cs-ct-co-303-data-structures-nov-2022.pdf',
+                    'cs-ct-co-305-object-oriented-programming-and-methodology-nov-2022.pdf': 'cse22/3rd/cs-ct-co-305-object-oriented-programming-and-methodology-nov-2022.pdf',
+                    'cs-ct-co-ci-304-digital-circuits-and-system-nov-2022.pdf': 'cse22/3rd/cs-ct-co-ci-304-digital-circuits-and-system-nov-2022.pdf',
+                    'cs-ct-co-ci-304-digital-systems-digital-circuits-and-system-nov-2022.pdf': 'cse22/3rd/cs-ct-co-ci-304-digital-systems-digital-circuits-and-system-nov-2022.pdf',
+                    'cs-ct-co-ci-304-digital-systems-nov-2022.pdf': 'cse22/3rd/cs-ct-co-ci-304-digital-systems-nov-2022.pdf',
+                    // Add subjects for Semester 3
+                },
+                4:{
+                    'ad-ag-at-ci-cs-ct-co-ee-ex-ft-it-mi-mm-bt-401-mathematics-3-jun-2022.pdf': 'cse22/4th/ad-ag-at-ci-cs-ct-co-ee-ex-ft-it-mi-mm-bt-401-mathematics-3-jun-2022.pdf',
+                    'ad-ag-at-ci-cs-ct-co-ee-ex-ft-it-mi-mm-bt-401-mathematics-3-nov-2022.pdf': 'cse22/4th/ad-ag-at-ci-cs-ct-co-ee-ex-ft-it-mi-mm-bt-401-mathematics-3-nov-2022.pdf',
+                    'al-cd-cs-ct-co-403-software-engineering-jun-2022.pdf': 'cse22/4th/al-cd-cs-ct-co-403-software-engineering-jun-2022.pdf',
+                    'ci-cs-ct-co-al-io-is-404-computer-organization-and-architecture-jun-2022.pdf': 'cse22/4th/ci-cs-ct-co-al-io-is-404-computer-organization-and-architecture-jun-2022.pdf',
+                    'cs-402-analysis-design-of-algorithm-jun-2022.pdf': 'cse22/4th/cs-402-analysis-design-of-algorithm-jun-2022.pdf',
+
+                },
+                5:{
+                    'cs-501-theory-of-computation-nov-2022.pdf': 'cse22/5th/cs-501-theory-of-computation-nov-2022.pdf',
+                    'cs-502-data-management-systems-nov-2022.pdf': 'cse22/5th/cs-502-data-management-systems-nov-2022.pdf',
+                    'cs-503-c-cyber-security-nov-2022.pdf': 'cse22/5th/cs-503-c-cyber-security-nov-2022.pdf',
+                    'cs-504-a-internet-and-web-technology-nov-2022.pdf': 'cse22/5th/cs-504-a-internet-and-web-technology-nov-2022.pdf',
+
+                },
+                6:{
+                    '/cs-601-machine-learning-may-2022.pdf': 'cse22/6th/cs-601-machine-learning-may-2022.pdf',
+                    'cs-602-computer-networks-may-2022.pdf': 'cse22/6th/cs-602-computer-networks-may-2022.pdf',
+                    'cs-603-b-computer-graphics-and-visualization-may-2022.pdf': 'cse22/6th/cs-603-b-computer-graphics-and-visualization-may-2022.pdf',
+                    'cs-603-c-compiler-design-may-2022.pdf': 'cse22/6th/cs-603-c-compiler-design-may-2022.pdf',
+                    'cs-604-b-project-management-may-2022.pdf': 'cse22/6th/cs-604-b-project-management-may-2022.pdf',
+                    'cs-604-c-rural-technology-and-community-development-may-2022.pdf': 'cse22/6th/cs-604-c-rural-technology-and-community-development-may-2022.pdf',
+
+                },
+                7:{
+                    'cs-701-software-architectures-nov-2022.pdf': 'cse22/7th/cs-701-software-architectures-nov-2022.pdf',
+                    'cs-702-d-big-data-nov-2022.pdf': 'cse22/7th/cs-702-d-big-data-nov-2022.pdf',
+                    'cs-703-a-cryptography-and-information-security-nov-2022.pdf': 'cse22/7th/cs-703-a-cryptography-and-information-security-nov-2022.pdf',
+
+                },
+                8:{
+                    'cs-801-internet-of-things-may-2022.pdf': 'cse22/8th/cs-801-internet-of-things-may-2022.pdf',
+                    'cs-802-a-block-chain-technologies-may-2022.pdf': 'cse22/8th/cs-802-a-block-chain-technologies-may-2022.pdf',
+                    'cs-802-b-cloud-computing-may-2022.pdf': 'cse22/8th/cs-802-b-cloud-computing-may-2022.pdf',
+                    'cs-802-c-high-performance-computing-may-2022.pdf': 'cse22/8th/cs-802-c-high-performance-computing-may-2022.pdf',
+                    'cs-802-d-object-oriented-software-engineering-may-2022.pdf': 'cse22/8th/cs-802-d-object-oriented-software-engineering-may-2022.pdf',
+                    'cs-803-a-image-processing-and-computer-vision-may-2022.pdf': 'cse22/8th/cs-803-a-image-processing-and-computer-vision-may-2022.pdf',
+                    'cs-803-d-managing-innovation-and-entrepreneurship-may-2022.pdf': 'cse22/8th/cs-803-d-managing-innovation-and-entrepreneurship-may-2022.pdf',
+                },
+                // Add other semesters and subjects similarly
+            },
+            2023: {
+                1: {
+                    'bt-101-engineering-chemistry-dec-2023.pdf': 'cse2023/1sem/bt-101-engineering-chemistry-dec-2023.pdf',
+                    'bt-101-engineering-chemistry-jun-2023.pdf': 'cse2023/1sem/bt-101-engineering-chemistry-jun-2023.pdf',
+                    'bt-102-mathematics-1-dec-2023.pdf': 'cse2023/1sem/bt-102-mathematics-1-dec-2023.pdf',
+                    'bt-102-mathematics-1-jun-2023.pdf': 'cse2023/1sem/bt-102-mathematics-1-jun-2023.pdf',
+                    'bt-103-english-for-communication-dec-2023.pdf': 'cse2023/1sem/bt-103-english-for-communication-dec-2023.pdf',
+                    'bt-103-english-for-communication-jun-2023.pdf': 'cse2023/1sem/bt-103-english-for-communication-jun-2023.pdf',
+                    'bt-104-basic-electrical-and-electronics-engineering-dec-2023.pdf': 'cse2023/1sem/bt-104-basic-electrical-and-electronics-engineering-dec-2023.pdf',
+                    'bt-104-basic-electrical-and-electronics-engineering-jun-2023.pdf': 'cse2023/1sem/bt-104-basic-electrical-and-electronics-engineering-jun-2023.pdf',
+                    'bt-105-engineering-graphics-dec-2023.pdf': 'cse2023/1sem/bt-105-engineering-graphics-dec-2023.pdf',
+                    'bt-105-engineering-graphics-jun-2023.pdf': 'cse2023/1sem/bt-105-engineering-graphics-jun-2023.pdf',
+                    'bt-201-engineering-physics-dec-2023.pdf': 'cse2023/1sem/bt-201-engineering-physics-dec-2023.pdf',
+                    'bt-201-engineering-physics-jun-2023.pdf': 'cse2023/1sem/bt-201-engineering-physics-jun-2023.pdf',
+                    'bt-202-mathematics-2-dec-2023.pdf': 'cse2023/1sem/bt-202-mathematics-2-dec-2023.pdf',
+                    'bt-202-mathematics-2-jun-2023.pdf': 'cse2023/1sem/bt-202-mathematics-2-jun-2023.pdf',
+                    'bt-202-mathematics-2-jun-2023-solution.pdf': 'cse2023/1sem/bt-202-mathematics-2-jun-2023-solution.pdf',
+                    'bt-203-basic-mechanical-engineering-dec-2023.pdf': 'cse2023/1sem/bt-203-basic-mechanical-engineering-dec-2023.pdf',
+                    'bt-203-basic-mechanical-engineering-jun-2023.pdf': 'cse2023/1sem/bt-203-basic-mechanical-engineering-jun-2023.pdf',
+                    'bt-204-basic-civil-engineering-and-engineering-mechanics-dec-2023.pdf': 'cse2023/1sem/bt-204-basic-civil-engineering-and-engineering-mechanics-dec-2023.pdf',
+                    'bt-204-basic-civil-engineering-and-engineering-mechanics-jun-2023.pdf': 'cse2023/1sem/bt-204-basic-civil-engineering-and-engineering-mechanics-jun-2023.pdf',
+                    'bt-205-basic-computer-engineering-dec-2023.pdf': 'cse2023/1sem/bt-205-basic-computer-engineering-dec-2023.pdf',
+                    'bt-205-basic-computer-engineering-jun-2023.pdf': 'cse2023/1sem/bt-205-basic-computer-engineering-jun-2023.pdf',
+                   
+                },
+                2: {
+                    'bt-101-engineering-chemistry-dec-2023.pdf': 'cse2023/2nd/bt-101-engineering-chemistry-dec-2023.pdf',
+                    'bt-101-engineering-chemistry-jun-2023.pdf': 'cse2023/2nd/bt-101-engineering-chemistry-jun-2023.pdf',
+                    'bt-102-mathematics-1-dec-2023.pdf': 'cse2023/2nd/bt-102-mathematics-1-dec-2023.pdf',
+                    'bt-102-mathematics-1-jun-2023.pdf': 'cse2023/2nd/bt-102-mathematics-1-jun-2023.pdf',
+                    'bt-103-english-for-communication-dec-2023.pdf': 'cse2023/2nd/bt-103-english-for-communication-dec-2023.pdf',
+                    'bt-103-english-for-communication-jun-2023.pdf': 'cse2023/2nd/bt-103-english-for-communication-jun-2023.pdf',
+                    'bt-104-basic-electrical-and-electronics-engineering-dec-2023.pdf': 'cse2023/2nd/bt-104-basic-electrical-and-electronics-engineering-dec-2023.pdf',
+                    'bt-104-basic-electrical-and-electronics-engineering-jun-2023.pdf': 'cse2023/2nd/bt-104-basic-electrical-and-electronics-engineering-jun-2023.pdf',
+                    'bt-105-engineering-graphics-dec-2023.pdf': 'cse2023/2nd/bt-105-engineering-graphics-dec-2023.pdf',
+                    'bt-105-engineering-graphics-jun-2023.pdf': 'cse2023/2nd/bt-105-engineering-graphics-jun-2023.pdf',
+                    'bt-201-engineering-physics-dec-2023.pdf': 'cse2023/2nd/bt-201-engineering-physics-dec-2023.pdf',
+                    'bt-201-engineering-physics-jun-2023.pdf': 'cse2023/2nd/bt-201-engineering-physics-jun-2023.pdf',
+                    'bt-202-mathematics-2-dec-2023.pdf': 'cse2023/2nd/bt-202-mathematics-2-dec-2023.pdf',
+                    'bt-202-mathematics-2-jun-2023.pdf': 'cse2023/2nd/bt-202-mathematics-2-jun-2023.pdf',
+                    'bt-202-mathematics-2-jun-2023-solution.pdf': 'cse2023/2nd/bt-202-mathematics-2-jun-2023-solution.pdf',
+                    'bt-203-basic-mechanical-engineering-dec-2023.pdf': 'cse2023/2nd/bt-203-basic-mechanical-engineering-dec-2023.pdf',
+                    'bt-203-basic-mechanical-engineering-jun-2023.pdf': 'cse2023/2nd/bt-203-basic-mechanical-engineering-jun-2023.pdf',
+                    'bt-204-basic-civil-engineering-and-engineering-mechanics-dec-2023.pdf': 'cse2023/2nd/bt-204-basic-civil-engineering-and-engineering-mechanics-dec-2023.pdf',
+                    'bt-204-basic-civil-engineering-and-engineering-mechanics-jun-2023.pdf': 'cse2023/2nd/bt-204-basic-civil-engineering-and-engineering-mechanics-jun-2023.pdf',
+                    'bt-205-basic-computer-engineering-dec-2023.pdf': 'cse2023/2nd/bt-205-basic-computer-engineering-dec-2023.pdf',
+                    'bt-205-basic-computer-engineering-jun-2023.pdf': 'cse2023/2nd/bt-205-basic-computer-engineering-jun-2023.pdf',
+                    
+                },
+                3: {
+                    
+                    'cs-305-object-oriented-programming-and-methodology-dec-2023.pdf': 'cse2023/3sm/cs-305-object-oriented-programming-and-methodology-dec-2023.pdf',
+                    'cs-ct-co-303-data-structures-dec-2023.pdf': 'cse2023/3sm/cs-ct-co-303-data-structures-dec-2023.pdf',
+                    'cs-ct-co-303-data-structures-jun-2023.pdf': 'cse2023/3sm/cs-ct-co-303-data-structures-jun-2023.pdf',
+                    'cs-ct-co-305-object-oriented-programming-and-methodology-jun-2023.pdf': 'cse2023/3sm/cs-ct-co-305-object-oriented-programming-and-methodology-jun-2023.pdf',
+                    'cs-ct-co-ci-304-digital-circuits-and-system-jun-2023.pdf': 'cse2023/3sm/cs-ct-co-ci-304-digital-circuits-and-system-jun-2023.pdf',
+                    'cs-ct-co-ci-cy-304-digital-systems-dec-2023.pdf': 'cse2023/3sm/cs-ct-co-ci-cy-304-digital-systems-dec-2023.pdf',
+                    'cs-ct-co-it-302-discrete-structure-jun-2023.pdf': 'cse2023/3sm/cs-ct-co-it-302-discrete-structure-jun-2023.pdf',
+                    'cs-ct-co-it-ci-302-discrete-structure-dec-2023.pdf': 'cse2023/3sm/cs-ct-co-it-ci-302-discrete-structure-dec-2023.pdf',
+                    'es-301-energy-and-environmental-engineering-dec-2023.pdf': 'cse2023/3sm/es-301-energy-and-environmental-engineering-dec-2023.pdf',
+   
+                },
+                4: {
+                    'ad-ag-an-at-ci-cs-ct-co-ee-ex-ft-it-mi-mm-bt401-mathematics-3-jun-2023.pdf': 'cse2023/4th/ad-ag-an-at-ci-cs-ct-co-ee-ex-ft-it-mi-mm-bt401-mathematics-3-jun-2023.pdf',
+                    'ad-cd-cs-405-operating-systems-jun-2023.pdf': 'cse2023/4th/ad-cd-cs-405-operating-systems-jun-2023.pdf',
+                    'ad-cd-cs-405-operating-systems-nov-2023.pdf': 'cse2023/4th/ad-cd-cs-405-operating-systems-nov-2023.pdf',
+                    'al-cd-cs-ct-co-403-software-engineering-jun-2023.pdf': 'cse2023/4th/al-cd-cs-ct-co-403-software-engineering-jun-2023.pdf',
+                    'al-cd-cs-ct-co-403-software-engineering-nov-2023.pdf': 'cse2023/4th/al-cd-cs-ct-co-403-software-engineering-nov-2023.pdf',
+                    'al-ci-cs-ct-co-io-is-404-computer-organization-and-architecture-jun-2023.pdf': 'cse2023/4th/al-ci-cs-ct-co-io-is-404-computer-organization-and-architecture-jun-2023.pdf',
+                    'al-ci-cs-ct-co-io-is-404-computer-organization-and-architecture-nov-2023.pdf': 'cse2023/4th/al-ci-cs-ct-co-io-is-404-computer-organization-and-architecture-nov-2023.pdf',
+                    'bt-401-mathematics-3-jun-2023.pdf': 'cse2023/4th/bt-401-mathematics-3-jun-2023.pdf',
+                    'cs-402-analysis-design-of-algorithm-jun-2023.pdf': 'cse2023/4th/cs-402-analysis-design-of-algorithm-jun-2023.pdf',
+                    'cs-402-analysis-design-of-algorithm-nov-2023.pdfSubject 2': 'cse2023/4th/cs-402-analysis-design-of-algorithm-nov-2023.pdf',
+
+                   
+                },
+                5: {
+                    'al-703-d-internet-and-web-technology-nov-2023.pdf': 'cse2023/5th/al-703-d-internet-and-web-technology-nov-2023.pdf',
+                    'cs-501-theory-of-computation-may-2023.pdf': 'cse2023/5th/cs-501-theory-of-computation-may-2023.pdf',
+                    'cs-501-theory-of-computation-nov-2023.pdf': 'cse2023/5th/cs-501-theory-of-computation-nov-2023.pdf',
+                    'cs-502-database-management-systems-nov-2023.pdf': 'cse2023/5th/cs-502-database-management-systems-nov-2023.pdf',
+                    'cs-503-a-data-analytics-nov-2023.pdf': 'cse2023/5th/cs-503-a-data-analytics-nov-2023.pdf',
+                    'cs-503-b-pattern-recognition-nov-2023.pdf': 'cse2023/5th/cs-503-b-pattern-recognition-nov-2023.pdf',
+                    'cs-503-c-cyber-security-nov-2023.pdf': 'cse2023/5th/cs-503-c-cyber-security-nov-2023.pdf',
+                    'cs-504-a-internet-and-web-technology-nov-2023.pdf': 'cse2023/5th/cs-504-a-internet-and-web-technology-nov-2023.pdf',
+
+                },
+                6: {
+                    'cd-cs-602-computer-networks-may-2023.pdf':'cse2023/6th/cd-cs-602-computer-networks-may-2023.pdf',
+                    'cs-601-machine-learning-may-2023.pdf':'cse2023/6th/cs-601-machine-learning-may-2023.pdf',
+                    'cs-603-c-compiler-design-may-2023.pdf':'cse2023/6th/cs-603-c-compiler-design-may-2023.pdf',
+                    'cs-604-a-knowledge-management-may-2023.pdf':'cse2023/6th/cs-604-a-knowledge-management-may-2023.pdf',
+                    'cs-604-b-project-management-may-2023.pdf':'cse2023/6th/cs-604-b-project-management-may-2023.pdf',
+
+                },
+                7: {
+                    'ad-702-c-cs-702-a-computational-intelligence-nov-2023.pdf': 'cse2023/7th/ad-702-c-cs-702-a-computational-intelligence-nov-2023.pdf',
+                    'cs-701-software-architectures-nov-2023.pdf': 'cse2023/7th/cs-701-software-architectures-nov-2023.pdf',
+                    'cs-702-b-deep-and-reinforcement-learning-nov-2023.pdf': 'cse2023/7th/cs-702-b-deep-and-reinforcement-learning-nov-2023.pdf',
+                    'cs-702-d-big-data-nov-2023.pdf': 'cse2023/7th/cs-702-d-big-data-nov-2023.pdf',
+                    'cs-703-a-cryptography-and-information-security-nov-2023.pdf': 'cse2023/7th/cs-703-a-cryptography-and-information-security-nov-2023.pdf',
+                    'cs-703-b-data-mining-and-warehousing-nov-2023.pdf': 'cse2023/7th/cs-703-b-data-mining-and-warehousing-nov-2023.pdf',
+
+                },
+                8: {
+                    'cs-801-internet-of-things-may-2023.pdf' :'cse2023/8th/cs-801-internet-of-things-may-2023.pdf',
+                    'cs-802-b-cloud-computing-may-2023.pdf' :'cse2023/8th/cs-802-b-cloud-computing-may-2023.pdf',
+                    'cs-803-a-image-processing-and-computer-vision-may-2023.pdf' :'cse2023/8th/cs-803-a-image-processing-and-computer-vision-may-2023.pdf',
+                    'cs-803-c-internet-of-things-may-2023.pdf' :'cse2023/8th/cs-803-c-internet-of-things-may-2023.pdf',
+                },
+            },
+            2024: {
+                1:{
+                    'bt-105-engineering-graphics-jun-2024.pdf': 'cse24/1s/bt-105-engineering-graphics-jun-2024.pdf',
+                    'bt-205-basic-computer-engineering-jun-2024.pdf': 'cse24/1s/bt-205-basic-computer-engineering-jun-2024.pdf',
+                    'cb-202-statistical-method-jun-2024.pdf': 'cse24/1s/cb-202-statistical-method-jun-2024.pdf',
+
+                },
+                2: {
+                    'bt-105-engineering-graphics-jun-2024.pdf': 'cse24/2d/bt-105-engineering-graphics-jun-2024.pdf',
+                    'bt-205-basic-computer-engineering-jun-2024.pdf': 'cse24/2d/bt-205-basic-computer-engineering-jun-2024.pdf',
+                    'cb-202-statistical-method-jun-2024.pdf': 'cse24/2d/cb-202-statistical-method-jun-2024.pdf',
+
+                },
+                3: {
+                    'cs-ct-co-303-data-structures-jun-2024.pdf': 'cse24/3d/cs-ct-co-303-data-structures-jun-2024.pdf',
+                    'cs-it-302-discrete-structure-jun-2024.pdf': 'cse24/3d/cs-it-302-discrete-structure-jun-2024.pdf',
+
+                },
+                4: {
+                    'al-cd-cs-ct-co-sd-403-software-engineering-jun-2024.pdf': 'cse24/4t/al-cd-cs-ct-co-sd-403-software-engineering-jun-2024.pdf',
+                    'al-csit-cs-ct-co-io-is-404-computer-organization-and-architecture-jun-2024.pdf': 'cse24/4t/al-csit-cs-ct-co-io-is-404-computer-organization-and-architecture-jun-2024.pdf',
+                    'cs-sd-402-analysis-design-of-algorithm-jun-2024.pdf': 'cse24/4t/cs-sd-402-analysis-design-of-algorithm-jun-2024.pdf',
+
+                },
+                5: {
+                    'pepar are not available 5th semster': '',
+
+                },
+                6: {
+                    'cd-cs-602-computer-networks-may-2024.pdf': 'cse24/6t/cd-cs-602-computer-networks-may-2024.pdf',
+                    'cs-601-machine-learning-may-2024.pdf': 'cse24/6t/cs-601-machine-learning-may-2024.pdf',
+                    'cs-603-c-compiler-design-may-2024.pdf': 'cse24/6t/cs-603-c-compiler-design-may-2024.pdf',
+                    'cs-604-b-project-management-may-2024.pdf': 'cse24/6t/cs-604-b-project-management-may-2024.pdf',
+
+                },
+                7: {
+                    'pepar are not available 7th semster': '',
+
+                },
+                8: {
+                    'cs-801-internet-of-things-dec-2024.pdf': 'cse24/8t/cs-801-internet-of-things-dec-2024.pdf',
+                    'cs-801-internet-of-things-may-2024.pdf': 'cse24/8t/cs-801-internet-of-things-may-2024.pdf',
+                    'cs-802-a-block-chain-technologies-may-2024.pdf': 'cse24/8t/cs-802-a-block-chain-technologies-may-2024.pdf',
+                    'cs-802-b-cloud-computing-dec-2024.pdf': 'cse24/8t/cs-802-b-cloud-computing-dec-2024.pdf',
+                    'cs-802-b-cloud-computing-may-2024.pdf': 'cse24/8t/cs-802-b-cloud-computing-may-2024.pdf',
+                    'cs-803-a-image-processing-and-computer-vision-may-2024.pdf': 'cse24/8t/cs-803-a-image-processing-and-computer-vision-may-2024.pdf',
+                    'cs-803-d-managing-innovation-and-entrepreneurship-may-2024.pdf': 'cse24/8t/cs-803-d-managing-innovation-and-entrepreneurship-may-2024.pdf',
+
+                },
+
+            },
+        
+           
+        };
+
+
+       
+    </script>
+     <!--script add-->
+     <script src="script.js"></script>
+
+     
+</body>
+</html>

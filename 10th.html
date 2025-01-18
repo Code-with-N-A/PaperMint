@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> MP Bord 10th</title>
+    <link rel="icon" href="img/favicon-32x32.png" type="image/png" sizes="32x32">
+
+
+    <!-- Website ke Description ke liye Meta Tag -->
+    <meta name="description" content="Find and download previous year question papers for schools, colleges, and universities. Free PDF downloads for all courses and exams.">
+
+    <!-- Keywords ke liye Meta Tag -->
+    <meta name="keywords" content="school question papers, college question papers, university question papers, solved papers, previous year papers, BSc question papers, engineering question papers, exam papers download">
+
+    <!-- Website Author ke liye Meta Tag -->
+    <meta name="author" content="Your Website Name">
+
+    <!-- Charset Set Karne ke liye Meta Tag -->
+    <meta charset="UTF-8">
+
+    <!-- Responsive Design ke liye Meta Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Robots Tag (Search Engines ko Batane ke liye) -->
+    <meta name="robots" content="index, follow">
+
+    <!-- Social Media Sharing ke liye Open Graph Tags -->
+    <meta property="og:title" content="School, College, University Question Papers - Download & View">
+    <meta property="og:description" content="Free PDFs of previous year question papers for schools, colleges, and universities. Download and view easily.">
+    <meta property="og:image" content="URL_to_your_image.jpg">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tag -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="School, College, University Question Papers - Download & View">
+    <meta name="twitter:description" content="Free PDFs of previous year question papers for schools, colleges, and universities.">
+    <meta name="twitter:image" content="URL_to_your_image.jpg">
+
+    <!-- PDF.js library ko include karna -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+   
+</head>
+<!--style.css add-->
+<link rel="stylesheet" href="style.css">
+<body>
+    <header><h1> MP Bord 10th</h1></header>
+
+    <div class="container">
+        <!-- San 2022 Row -->
+        <div class="san-row">
+            <div onclick="showSemesters(2022)" id="san-2022"> 2022</div>
+            <div onclick="showSemesters(2023)" id="san-2023"> 2023</div>
+            <div onclick="showSemesters(2024)" id="san-2024"> 2024</div>
+           
+        </div>
+
+        <!-- Semester Columns for selected year -->
+        <div id="semester-container" class="semester-container"></div>
+
+        <!-- Subject Links for selected semester -->
+        <div id="subject-links" class="subject-links"></div>
+
+        <!-- PDF Viewer and Download Button -->
+        <div id="pdf-viewer"></div>
+        <a id="download-btn" href="" download>Download PDF</a>
+    </div>
+
+    <script>
+         // PDF data for Semesters and Subjects
+         const pdfData = {
+            2022: {
+                1: {
+                    'mp-board-class-10-electronics-and-hardware-s-117-2022.pdf': 'MP bord all/10th/22/mp-board-class-10-electronics-and-hardware-s-117-2022.pdf',
+                    'mp-board-class-10-english-general-411-jun-2022.pdf': 'MP bord all/10th/22/mp-board-class-10-english-general-411-jun-2022.pdf',
+                    'mp-board-class-10-english-s-102-2022.pdf': 'MP bord all/10th/22/mp-board-class-10-english-s-102-2022.pdf',
+                    'mp-board-class-10-hindi-s-101-2022.pdf': 'MP bord all/10th/22/mp-board-class-10-hindi-s-101-2022.pdf',
+                    'mp-board-class-10-it-ites-s-114-2022.pdf': 'MP bord all/10th/22/mp-board-class-10-it-ites-s-114-2022.pdf',
+                    'mp-board-class-10-mathematics-100-jun-2022.pdf': 'MP bord all/10th/22/mp-board-class-10-mathematics-100-jun-2022.pdf',
+                    'mp-board-class-10-mathematics-s-109-2022.pdf': 'MP bord all/10th/22/mp-board-class-10-mathematics-s-109-2022.pdf',
+                    'mp-board-class-10-sanskrit-s-103-2022.pdf': 'MP bord all/10th/22/mp-board-class-10-sanskrit-s-103-2022.pdf',
+                    'mp-board-class-10-science-s-110-2022.pdf': 'MP bord all/10th/22/mp-board-class-10-science-s-110-2022.pdf',
+                    'mp-board-class-10-social-science-s-111-2022.pdf': 'MP bord all/10th/22/mp-board-class-10-social-science-s-111-2022.pdf',
+                    'mp-board-class-12-higher-mathematics-e-219-2022.pdf': 'MP bord all/10th/22/mp-board-class-12-higher-mathematics-e-219-2022.pdf',
+                },
+            },
+               
+            2023: {
+                1: {
+                  'mp-board-class-10-electronics-and-hardware-j-518-set-b-2023.pdf': 'MP bord all/10th/23/mp-board-class-10-electronics-and-hardware-j-518-set-b-2023.pdf',
+                  'mp-board-class-10-english-j-502-set-a-2023.pdf': 'MP bord all/10th/23/mp-board-class-10-english-j-502-set-a-2023.pdf',
+                  'mp-board-class-10-hindi-j-501-set-b-2023.pdf': 'MP bord all/10th/23/mp-board-class-10-hindi-j-501-set-b-2023.pdf',
+                  'mp-board-class-10-it-ites-j-515-set-b-2023.pdf': 'MP bord all/10th/23/mp-board-class-10-it-ites-j-515-set-b-2023.pdf',
+                  'mp-board-class-10-mathematics-j-509-set-a-2023.pdf': 'MP bord all/10th/23/mp-board-class-10-mathematics-j-509-set-a-2023.pdf',
+                  'mp-board-class-10-retail-u-636-set-d-2023.pdf': 'MP bord all/10th/23/mp-board-class-10-retail-u-636-set-d-2023.pdf',
+                  'mp-board-class-10-sanskrit-j-503-set-a-2023.pdf': 'MP bord all/10th/23/mp-board-class-10-sanskrit-j-503-set-a-2023.pdf',
+                  'mp-board-class-10-science-j-510-set-a-2023.pdf': 'MP bord all/10th/23/mp-board-class-10-science-j-510-set-a-2023.pdf',
+                  'mp-board-class-10-social-science-j-511-set-a-2023.pdf': 'MP bord all/10th/23/mp-board-class-10-social-science-j-511-set-a-2023.pdf',
+                },
+            },
+                2024: {
+                1:{
+                    'mp-board-class-10-electronics-and-hardware-t-0669-set-a-2024.pdf': 'MP bord all/10th/24/mp-board-class-10-electronics-and-hardware-t-0669-set-a-2024.pdf',
+                    'mp-board-class-10-english-t-0652-set-a-2024.pdf': 'MP bord all/10th/24/mp-board-class-10-english-t-0652-set-a-2024.pdf',
+                    'mp-board-class-10-hindi-t-0651-set-a-2024.pdf': 'MP bord all/10th/24/mp-board-class-10-hindi-t-0651-set-a-2024.pdf',
+                    'mp-board-class-10-it-ites-t0666-set-a-2024.pdf': 'MP bord all/10th/24/mp-board-class-10-it-ites-t0666-set-a-2024.pdf',
+                    'mp-board-class-10-mathematics-t-0659-set-a-2024.pdf': 'MP bord all/10th/24/mp-board-class-10-mathematics-t-0659-set-a-2024.pdf',
+                    'mp-board-class-10-sanskrit-t-0653-set-a-2024.pdf': 'MP bord all/10th/24/mp-board-class-10-sanskrit-t-0653-set-a-2024.pdf',
+                    'mp-board-class-10-science-t-0660-set-a-2024.pdf': 'MP bord all/10th/24/mp-board-class-10-science-t-0660-set-a-2024.pdf',
+                    'mp-board-class-10-social-science-t-0661-2024.pdf': 'MP bord all/10th/24/mp-board-class-10-social-science-t-0661-2024.pdf',
+                    'mp-board-class-10-urdu-t-0654-set-b-2024.pdf': 'MP bord all/10th/24/mp-board-class-10-urdu-t-0654-set-b-2024.pdf',
+                },
+               
+
+            },
+        
+        
+        };
+
+
+       
+    </script>
+     <!--script add-->
+     <script src="school.js"></script>
+
+     
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electrical Engineering</title>
+    <link rel="icon" href="img/favicon-32x32.png" type="image/png" sizes="32x32">
+
+
+    <!-- Website ke Description ke liye Meta Tag -->
+    <meta name="description" content="Find and download previous year question papers for schools, colleges, and universities. Free PDF downloads for all courses and exams.">
+
+    <!-- Keywords ke liye Meta Tag -->
+    <meta name="keywords" content="school question papers, college question papers, university question papers, solved papers, previous year papers, BSc question papers, engineering question papers, exam papers download">
+
+    <!-- Website Author ke liye Meta Tag -->
+    <meta name="author" content="Your Website Name">
+
+    <!-- Charset Set Karne ke liye Meta Tag -->
+    <meta charset="UTF-8">
+
+    <!-- Responsive Design ke liye Meta Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Robots Tag (Search Engines ko Batane ke liye) -->
+    <meta name="robots" content="index, follow">
+
+    <!-- Social Media Sharing ke liye Open Graph Tags -->
+    <meta property="og:title" content="School, College, University Question Papers - Download & View">
+    <meta property="og:description" content="Free PDFs of previous year question papers for schools, colleges, and universities. Download and view easily.">
+    <meta property="og:image" content="URL_to_your_image.jpg">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tag -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="School, College, University Question Papers - Download & View">
+    <meta name="twitter:description" content="Free PDFs of previous year question papers for schools, colleges, and universities.">
+    <meta name="twitter:image" content="URL_to_your_image.jpg">
+
+    <!-- PDF.js library ko include karna -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+   
+</head>
+<!--style.css add-->
+<link rel="stylesheet" href="style.css">
+<body>
+    <header><h1>Electrical Engineering</h1></header>
+
+    <div class="container">
+        <!-- San 2022 Row -->
+        <div class="san-row">
+            <div onclick="showSemesters(2022)" id="san-2022"> 2022</div>
+            <div onclick="showSemesters(2023)" id="san-2023"> 2023</div>
+            <div onclick="showSemesters(2024)" id="san-2024"> 2024</div>
+           
+        </div>
+
+        <!-- Semester Columns for selected year -->
+        <div id="semester-container" class="semester-container"></div>
+
+        <!-- Subject Links for selected semester -->
+        <div id="subject-links" class="subject-links"></div>
+
+        <!-- PDF Viewer and Download Button -->
+        <div id="pdf-viewer"></div>
+        <a id="download-btn" href="" download>Download PDF</a>
+    </div>
+
+    <script>
+         // PDF data for Semesters and Subjects
+         const pdfData = {
+            2022: {
+                1: {
+                    'bt-101-engineering-chemistry-jun-2022.pdf': 'cse22/bt-101-engineering-chemistry-jun-2022.pdf',
+                    'bt-102-mathematics-1-nov-2022.pdf': 'cse22/bt-102-mathematics-1-nov-2022.pdf',
+                    'bt-103-english-for-communication-jun-2022.pdf': 'cse22/bt-103-english-for-communication-jun-2022.pdf',
+                    'bt-103-english-for-communication-nov-2022.pdf': 'cse22/bt-103-english-for-communication-nov-2022.pdf',
+                    'bt-104-basic-electrical-and-electronics-engineering-jun-2022.pdf': 'cse22/bt-104-basic-electrical-and-electronics-engineering-jun-2022.pdf',
+                    'bt-104-basic-electrical-and-electronics-engineering-nov-2022.pdf': 'cse22/bt-104-basic-electrical-and-electronics-engineering-nov-2022.pdf',
+                    'bt-105-engineering-graphics-jun-2022.pdf': 'cse22/bt-105-engineering-graphics-jun-2022.pdf',
+                    'bt-105-engineering-graphics-nov-2022.pdf': 'cse22/bt-105-engineering-graphics-nov-2022.pdf',
+                    'bt-201-engineering-physics-jun-2022.pdf': 'cse22/bt-201-engineering-physics-jun-2022.pdf',
+                    'bt-201-engineering-physics-nov-2022.pdf': 'cse22/bt-201-engineering-physics-nov-2022.pdf',
+                    'bt-202-mathematics-2-jun-2022.pdf': 'cse22/bt-202-mathematics-2-jun-2022.pdf',
+                    'bt-202-mathematics-2-nov-2022.pdf': 'cse22/bt-202-mathematics-2-nov-2022.pdf',
+                    'bt-203-basic-mechanical-engineering-jun-2022.pdf': 'cse22/bt-203-basic-mechanical-engineering-jun-2022.pdf',
+                    'bt-203-basic-mechanical-engineering-nov-2022.pdf': 'cse22/bt-203-basic-mechanical-engineering-nov-2022.pdf',
+                    'bt-204-basic-civil-engineering-and-engineering-mechanics-jun-2022.pdf': 'cse22/bt-204-basic-civil-engineering-and-engineering-mechanics-jun-2022.pdf',
+                    'bt-204-basic-civil-engineering-and-engineering-mechanics-nov-2022.pdf': 'cse22/bt-204-basic-civil-engineering-and-engineering-mechanics-nov-2022.pdf',
+                    'bt-205-basic-computer-engineering-jun-2022.pdf': 'cse22/bt-205-basic-computer-engineering-jun-2022.pdf',
+                    'bt-205-basic-computer-engineering-nov-2022.pdf': 'cse22/bt-205-basic-computer-engineering-nov-2022.pdf',
+                    'bt-1002-mathematics-1-jun-2022.pdf': 'cse22/bt-1002-mathematics-1-jun-2022.pdf',
+                    
+                    // Add up to 19 subjects for Semester 1
+                },
+                2: {
+                    'bt-101-engineering-chemistry-jun-2022.pdf': 'cse22/2nd/bt-101-engineering-chemistry-jun-2022.pdf',
+                    'bt-101-engineering-chemistry-nov-2022.pdf': 'cse22/2nd/bt-101-engineering-chemistry-nov-2022.pdf',
+                    'bt-102-mathematics-1-nov-2022.pdf': 'cse22/2nd/bt-102-mathematics-1-nov-2022.pdf',
+                    'bt-102-mathematics-jun-2022.pdf': 'cse22/2nd/bt-102-mathematics-jun-2022.pdf',
+                    'bt-103-english-for-communication-jun-2022.pdf': 'cse22/2nd/bt-103-english-for-communication-jun-2022.pdf',
+                    'bt-103-english-for-communication-nov-2022.pdf': 'cse22/2nd/bt-103-english-for-communication-nov-2022.pdf',
+                    'bt-104-basic-electrical-and-electronics-engineering-jun-2022.pdf': 'cse22/2nd/bt-104-basic-electrical-and-electronics-engineering-jun-2022.pdf',
+                    'bt-104-basic-electrical-and-electronics-engineering-nov-2022.pdf': 'cse22/2nd/bt-104-basic-electrical-and-electronics-engineering-nov-2022.pdf',
+                    'bt-105-engineering-graphics-jun-2022.pdf': 'cse22/2nd/bt-105-engineering-graphics-jun-2022.pdf',
+                    'bt-105-engineering-graphics-nov-2022.pdf': 'cse22/2nd/bt-105-engineering-graphics-nov-2022.pdf',
+                    'bt-201-engineering-physics-jun-2022.pdf': 'cse22/2nd/bt-201-engineering-physics-jun-2022.pdf',
+                    'bt-201-engineering-physics-nov-2022.pdf': 'cse22/2nd/bt-201-engineering-physics-nov-2022.pdf',
+                    'bt-202-mathematics-2-jun-2022.pdf': 'cse22/2nd/bt-202-mathematics-2-jun-2022.pdf',
+                    'bt-202-mathematics-2-nov-2022.pdf': 'cse22/2nd/bt-202-mathematics-2-nov-2022.pdf',
+                    'bt-203-basic-mechanical-engineering-jun-2022.pdf': 'cse22/2nd/bt-203-basic-mechanical-engineering-jun-2022.pdf',
+                    'bt-203-basic-mechanical-engineering-nov-2022.pdf': 'cse22/2nd/bt-203-basic-mechanical-engineering-nov-2022.pdf',
+                    'bt-204-basic-civil-engineering-and-engineering-mechanics-jun-2022.pdf': 'cse22/2nd/bt-204-basic-civil-engineering-and-engineering-mechanics-jun-2022.pdf',
+                    'bt-204-basic-civil-engineering-and-engineering-mechanics-nov-2022.pdf': 'cse22/2nd/bt-204-basic-civil-engineering-and-engineering-mechanics-nov-2022.pdf',
+                    'bt-205-basic-computer-engineering-jun-2022.pdf': 'cse22/2nd/bt-205-basic-computer-engineering-jun-2022.pdf',
+                    'bt-205-basic-computer-engineering-nov-2022.pdf': 'cse22/2nd/bt-205-basic-computer-engineering-nov-2022.pdf',
+                    'bt-1002-mathematics-1-jun-2022.pdf': 'cse22/2nd/bt-1002-mathematics-1-jun-2022.pdf',
+                   
+                    // Add up to 5 subjects for Semester 2
+                },
+                3: {
+                   'btech-3-sem-mathematics-3-nov-2022.pdf': 'RGPV-EE/EE/22/3/btech-3-sem-mathematics-3-nov-2022.pdf',
+                },
+                4:{
+                    'pepar are not available 4th semster': '',
+                    
+                },
+                5:{
+                   'ee-ex-503-a-electrical-power-generation-and-economy-nov-2022.pdf': 'RGPV-EE/EE/22/5/ee-ex-503-a-electrical-power-generation-and-economy-nov-2022.pdf',
+                },
+                6:{
+                    'ee-601-electrical-machine-design-may-2022.pdf': 'RGPV-EE/EE/22/6/ee-601-electrical-machine-design-may-2022.pdf',
+                    'ee-602-power-system-2-may-2022.pdf': 'RGPV-EE/EE/22/6/ee-602-power-system-2-may-2022.pdf',
+                    'ee-604-b-energy-conservation-and-management-may-2022.pdf': 'RGPV-EE/EE/22/6/ee-604-b-energy-conservation-and-management-may-2022.pdf',
+                },
+                7:{
+                   'ee-701-electrical-drives-nov-2022.pdf': 'RGPV-EE/EE/22/7/ee-701-electrical-drives-nov-2022.pdf',
+                   'ee-702-a-high-voltage-engineering-nov-2022.pdf': 'RGPV-EE/EE/22/7/ee-702-a-high-voltage-engineering-nov-2022.pdf',
+                   'ee-702-b-ex-702-a-power-electronics-applications-to-power-system-nov-2022.pdf': 'RGPV-EE/EE/22/7/ee-702-b-ex-702-a-power-electronics-applications-to-power-system-nov-2022.pdf',
+                   'ee-703-a-utilization-of-electrical-energy-nov-2022.pdf': 'RGPV-EE/EE/22/7/ee-703-a-utilization-of-electrical-energy-nov-2022.pdf',
+                },
+                8:{
+                    'ee-801-power-quality-improvement-and-mitigation-technique-ee-801-may-2022.pdf': 'RGPV-EE/EE/22/8/ee-801-power-quality-improvement-and-mitigation-technique-ee-801-may-2022.pdf',
+                    'ee-802-c-ehv-ac-and-dc-transmission-may-2022.pdf': 'RGPV-EE/EE/22/8/ee-802-c-ehv-ac-and-dc-transmission-may-2022.pdf',
+                    'ee-803-b-ex-803-a-power-electronics-converters-for-renewable-may-2022.pdf': 'RGPV-EE/EE/22/8/ee-803-b-ex-803-a-power-electronics-converters-for-renewable-may-2022.pdf',
+                    'ee-ex-802-b-special-machine-may-2022.pdf': 'RGPV-EE/EE/22/8/ee-ex-802-b-special-machine-may-2022.pdf',
+                },
+                // Add other semesters and subjects similarly
+            },
+            2023: {
+                1: {
+                    'bt-101-engineering-chemistry-dec-2023.pdf': 'cse2023/1sem/bt-101-engineering-chemistry-dec-2023.pdf',
+                    'bt-101-engineering-chemistry-jun-2023.pdf': 'cse2023/1sem/bt-101-engineering-chemistry-jun-2023.pdf',
+                    'bt-102-mathematics-1-dec-2023.pdf': 'cse2023/1sem/bt-102-mathematics-1-dec-2023.pdf',
+                    'bt-102-mathematics-1-jun-2023.pdf': 'cse2023/1sem/bt-102-mathematics-1-jun-2023.pdf',
+                    'bt-103-english-for-communication-dec-2023.pdf': 'cse2023/1sem/bt-103-english-for-communication-dec-2023.pdf',
+                    'bt-103-english-for-communication-jun-2023.pdf': 'cse2023/1sem/bt-103-english-for-communication-jun-2023.pdf',
+                    'bt-104-basic-electrical-and-electronics-engineering-dec-2023.pdf': 'cse2023/1sem/bt-104-basic-electrical-and-electronics-engineering-dec-2023.pdf',
+                    'bt-104-basic-electrical-and-electronics-engineering-jun-2023.pdf': 'cse2023/1sem/bt-104-basic-electrical-and-electronics-engineering-jun-2023.pdf',
+                    'bt-105-engineering-graphics-dec-2023.pdf': 'cse2023/1sem/bt-105-engineering-graphics-dec-2023.pdf',
+                    'bt-105-engineering-graphics-jun-2023.pdf': 'cse2023/1sem/bt-105-engineering-graphics-jun-2023.pdf',
+                    'bt-201-engineering-physics-dec-2023.pdf': 'cse2023/1sem/bt-201-engineering-physics-dec-2023.pdf',
+                    'bt-201-engineering-physics-jun-2023.pdf': 'cse2023/1sem/bt-201-engineering-physics-jun-2023.pdf',
+                    'bt-202-mathematics-2-dec-2023.pdf': 'cse2023/1sem/bt-202-mathematics-2-dec-2023.pdf',
+                    'bt-202-mathematics-2-jun-2023.pdf': 'cse2023/1sem/bt-202-mathematics-2-jun-2023.pdf',
+                    'bt-202-mathematics-2-jun-2023-solution.pdf': 'cse2023/1sem/bt-202-mathematics-2-jun-2023-solution.pdf',
+                    'bt-203-basic-mechanical-engineering-dec-2023.pdf': 'cse2023/1sem/bt-203-basic-mechanical-engineering-dec-2023.pdf',
+                    'bt-203-basic-mechanical-engineering-jun-2023.pdf': 'cse2023/1sem/bt-203-basic-mechanical-engineering-jun-2023.pdf',
+                    'bt-204-basic-civil-engineering-and-engineering-mechanics-dec-2023.pdf': 'cse2023/1sem/bt-204-basic-civil-engineering-and-engineering-mechanics-dec-2023.pdf',
+                    'bt-204-basic-civil-engineering-and-engineering-mechanics-jun-2023.pdf': 'cse2023/1sem/bt-204-basic-civil-engineering-and-engineering-mechanics-jun-2023.pdf',
+                    'bt-205-basic-computer-engineering-dec-2023.pdf': 'cse2023/1sem/bt-205-basic-computer-engineering-dec-2023.pdf',
+                    'bt-205-basic-computer-engineering-jun-2023.pdf': 'cse2023/1sem/bt-205-basic-computer-engineering-jun-2023.pdf',
+                   
+                },
+                2: {
+                    'bt-101-engineering-chemistry-dec-2023.pdf': 'cse2023/2nd/bt-101-engineering-chemistry-dec-2023.pdf',
+                    'bt-101-engineering-chemistry-jun-2023.pdf': 'cse2023/2nd/bt-101-engineering-chemistry-jun-2023.pdf',
+                    'bt-102-mathematics-1-dec-2023.pdf': 'cse2023/2nd/bt-102-mathematics-1-dec-2023.pdf',
+                    'bt-102-mathematics-1-jun-2023.pdf': 'cse2023/2nd/bt-102-mathematics-1-jun-2023.pdf',
+                    'bt-103-english-for-communication-dec-2023.pdf': 'cse2023/2nd/bt-103-english-for-communication-dec-2023.pdf',
+                    'bt-103-english-for-communication-jun-2023.pdf': 'cse2023/2nd/bt-103-english-for-communication-jun-2023.pdf',
+                    'bt-104-basic-electrical-and-electronics-engineering-dec-2023.pdf': 'cse2023/2nd/bt-104-basic-electrical-and-electronics-engineering-dec-2023.pdf',
+                    'bt-104-basic-electrical-and-electronics-engineering-jun-2023.pdf': 'cse2023/2nd/bt-104-basic-electrical-and-electronics-engineering-jun-2023.pdf',
+                    'bt-105-engineering-graphics-dec-2023.pdf': 'cse2023/2nd/bt-105-engineering-graphics-dec-2023.pdf',
+                    'bt-105-engineering-graphics-jun-2023.pdf': 'cse2023/2nd/bt-105-engineering-graphics-jun-2023.pdf',
+                    'bt-201-engineering-physics-dec-2023.pdf': 'cse2023/2nd/bt-201-engineering-physics-dec-2023.pdf',
+                    'bt-201-engineering-physics-jun-2023.pdf': 'cse2023/2nd/bt-201-engineering-physics-jun-2023.pdf',
+                    'bt-202-mathematics-2-dec-2023.pdf': 'cse2023/2nd/bt-202-mathematics-2-dec-2023.pdf',
+                    'bt-202-mathematics-2-jun-2023.pdf': 'cse2023/2nd/bt-202-mathematics-2-jun-2023.pdf',
+                    'bt-202-mathematics-2-jun-2023-solution.pdf': 'cse2023/2nd/bt-202-mathematics-2-jun-2023-solution.pdf',
+                    'bt-203-basic-mechanical-engineering-dec-2023.pdf': 'cse2023/2nd/bt-203-basic-mechanical-engineering-dec-2023.pdf',
+                    'bt-203-basic-mechanical-engineering-jun-2023.pdf': 'cse2023/2nd/bt-203-basic-mechanical-engineering-jun-2023.pdf',
+                    'bt-204-basic-civil-engineering-and-engineering-mechanics-dec-2023.pdf': 'cse2023/2nd/bt-204-basic-civil-engineering-and-engineering-mechanics-dec-2023.pdf',
+                    'bt-204-basic-civil-engineering-and-engineering-mechanics-jun-2023.pdf': 'cse2023/2nd/bt-204-basic-civil-engineering-and-engineering-mechanics-jun-2023.pdf',
+                    'bt-205-basic-computer-engineering-dec-2023.pdf': 'cse2023/2nd/bt-205-basic-computer-engineering-dec-2023.pdf',
+                    'bt-205-basic-computer-engineering-jun-2023.pdf': 'cse2023/2nd/bt-205-basic-computer-engineering-jun-2023.pdf',
+                    
+                },
+                3: {
+                    'ee-302-electromagnetic-field-and-materials-jun-2023.pdf': 'RGPV-EE/EE/23/3/ee-302-electromagnetic-field-and-materials-jun-2023.pdf',
+                    'ee-304-analog-electronics-dec-2023.pdf': 'RGPV-EE/EE/23/3/ee-304-analog-electronics-dec-2023.pdf',
+                    'ee-304-analog-electronics-jun-2023.pdf': 'RGPV-EE/EE/23/3/ee-304-analog-electronics-jun-2023.pdf',
+                    'ee-305-network-analysis-jun-2023.pdf': 'RGPV-EE/EE/23/3/ee-305-network-analysis-jun-2023.pdf',
+                    'ee-ex-303-electrical-measurements-and-measuring-instruments-dec-2023.pdf': 'RGPV-EE/EE/23/3/ee-ex-303-electrical-measurements-and-measuring-instruments-dec-2023.pdf',
+                    'ee-ex-303-electrical-measurements-and-measuring-instruments-jun-2023.pdf': 'RGPV-EE/EE/23/3/ee-ex-303-electrical-measurements-and-measuring-instruments-jun-2023.pdf',
+                    'es-301-energy-and-environmental-engineering-jun-2023.pdf': 'RGPV-EE/EE/23/3/es-301-energy-and-environmental-engineering-jun-2023.pdf',
+                   
+                },
+                4: {
+                   'bt-401-mathematics-3-jun-2023.pdf': 'RGPV-EE/EE/23/4/bt-401-mathematics-3-jun-2023.pdf',
+                   'ee-ex-402-electrical-machine-1-jun-2023.pdf': 'RGPV-EE/EE/23/4/ee-ex-402-electrical-machine-1-jun-2023.pdf',
+                   'ee-ex-402-electrical-machine-1-nov-2023.pdf': 'RGPV-EE/EE/23/4/ee-ex-402-electrical-machine-1-nov-2023.pdf',
+                   'ee-ex-403-digital-electronics-and-logic-design-jun-2023.pdf': 'RGPV-EE/EE/23/4/ee-ex-403-digital-electronics-and-logic-design-jun-2023.pdf',
+                   'ee-ex-403-digital-electronics-and-logic-design-nov-2023.pdf': 'RGPV-EE/EE/23/4/ee-ex-403-digital-electronics-and-logic-design-nov-2023.pdf',
+                   'ee-ex-404-power-system-1-jun-2023.pdf': 'RGPV-EE/EE/23/4/ee-ex-404-power-system-1-jun-2023.pdf',
+                   'ee-ex-404-power-system-1-nov-2023.pdf': 'RGPV-EE/EE/23/4/ee-ex-404-power-system-1-nov-2023.pdf',
+                   'ee-ex-405-control-system-jun-2023.pdf': 'RGPV-EE/EE/23/4/ee-ex-405-control-system-jun-2023.pdf',
+                   'ee-ex-405-control-system-nov-2023.pdf': 'RGPV-EE/EE/23/4/ee-ex-405-control-system-nov-2023.pdf',
+                   
+                },
+                5: {
+                    'ee-504-b-signals-and-system-nov-2023.pdf': 'RGPV-EE/EE/23/5/ee-504-b-signals-and-system-nov-2023.pdf',
+                    'ee-ex-501-electrical-machine-2-may-2023.pdf': 'RGPV-EE/EE/23/5/ee-ex-501-electrical-machine-2-may-2023.pdf',
+                    'ee-ex-501-electrical-machine-2-nov-2023.pdf': 'RGPV-EE/EE/23/5/ee-ex-501-electrical-machine-2-nov-2023.pdf',
+                    'ee-ex-502-power-electronics-nov-2023.pdf': 'RGPV-EE/EE/23/5/ee-ex-502-power-electronics-nov-2023.pdf',
+                    'ee-ex-503-a-electrical-power-generation-and-economy-nov-2023.pdf': 'RGPV-EE/EE/23/5/ee-ex-503-a-electrical-power-generation-and-economy-nov-2023.pdf',
+                },
+                6: {
+                   'ee-602-power-system-2-mar-2023.pdf': 'RGPV-EE/EE/23/6/ee-602-power-system-2-mar-2023.pdf',
+                   'ee-603-a-power-sytem-protection-may-2023.pdf': 'RGPV-EE/EE/23/6/ee-603-a-power-sytem-protection-may-2023.pdf',
+                },
+                7: {
+                   'pepar are not available 7th semster': '',
+                },
+                8: {
+                   'ce-803-b-ee-803-d-ex-803-d-me-803-a-data-analytics-may-2023.pdf': 'RGPV-EE/EE/23/8/ce-803-b-ee-803-d-ex-803-d-me-803-a-data-analytics-may-2023.pdf',
+                   'ee-801-power-quality-improvement-and-mitigation-technique-may-2023.pdf': 'RGPV-EE/EE/23/8/ee-801-power-quality-improvement-and-mitigation-technique-may-2023.pdf',
+                   'ee-802-a-advanced-electrical-drives-may-2023.pdf': 'RGPV-EE/EE/23/8/ee-802-a-advanced-electrical-drives-may-2023.pdf',
+                   'ee-802-ehv-ac-and-dc-transmission-may-2023.pdf': 'RGPV-EE/EE/23/8/ee-802-ehv-ac-and-dc-transmission-may-2023.pdf',
+                   'ee-803-b-ex-803-a-power-electronics-converters-for-renewable-energy-may-2023.pdf': 'RGPV-EE/EE/23/8/ee-803-b-ex-803-a-power-electronics-converters-for-renewable-energy-may-2023.pdf',
+                },
+            },
+            2024: {
+                1:{
+                    'bt-105-engineering-graphics-jun-2024.pdf': 'cse24/1s/bt-105-engineering-graphics-jun-2024.pdf',
+                    'bt-205-basic-computer-engineering-jun-2024.pdf': 'cse24/1s/bt-205-basic-computer-engineering-jun-2024.pdf',
+                    'cb-202-statistical-method-jun-2024.pdf': 'cse24/1s/cb-202-statistical-method-jun-2024.pdf',
+
+                },
+                2: {
+                    'bt-105-engineering-graphics-jun-2024.pdf': 'cse24/2d/bt-105-engineering-graphics-jun-2024.pdf',
+                    'bt-205-basic-computer-engineering-jun-2024.pdf': 'cse24/2d/bt-205-basic-computer-engineering-jun-2024.pdf',
+                    'cb-202-statistical-method-jun-2024.pdf': 'cse24/2d/cb-202-statistical-method-jun-2024.pdf',
+
+                },
+                3: {
+                   'ee-ex-303-electrical-measurements-and-measuring-instruments-jun-2024.pdf': 'RGPV-EE/EE/24/3/ee-ex-303-electrical-measurements-and-measuring-instruments-jun-2024.pdf',
+                   'ee-ex-402-electrical-machine-1-jun-2024.pdf': 'RGPV-EE/EE/24/3/ee-ex-402-electrical-machine-1-jun-2024.pdf',
+                   'ee-ex-403-digital-electronics-and-logic-design-jun-2024.pdf': 'RGPV-EE/EE/24/3/ee-ex-403-digital-electronics-and-logic-design-jun-2024.pdf',
+                   'ee-ex-404-power-system-1-jun-2024.pdf': 'RGPV-EE/EE/24/3/ee-ex-404-power-system-1-jun-2024.pdf',
+                },
+                4: {
+                    'ee-ex-402-electrical-machine-1-jun-2024.pdf': 'RGPV-EE/EE/24/4/ee-ex-402-electrical-machine-1-jun-2024.pdf',
+                    'ee-ex-403-digital-electronics-and-logic-design-jun-2024.pdf': 'RGPV-EE/EE/24/4/ee-ex-403-digital-electronics-and-logic-design-jun-2024.pdf',
+                    'ee-ex-404-power-system-1-jun-2024.pdf': 'RGPV-EE/EE/24/4/ee-ex-404-power-system-1-jun-2024.pdf',
+                    'ee-ex-405-control-system-jun-2024.pdf': 'RGPV-EE/EE/24/4/ee-ex-405-control-system-jun-2024.pdf',
+                },
+                5: {
+                    'pepar are not available 5th semster': '',
+
+                },
+                6: {
+                    'ee-603-a-power-system-protection-may-2024.pdf': 'RGPV-EE/EE/24/6/ee-603-a-power-system-protection-may-2024.pdf',
+
+                },
+                7: {
+                    'pepar are not available 7th semster': '',
+
+                },
+                8: {
+                    'pepar are not available 8th semster': '',
+                },
+
+            },
+        
+           
+        };
+
+
+       
+    </script>
+     <!--script add-->
+     <script src="script.js"></script>
+
+     
+</body>
+</html>

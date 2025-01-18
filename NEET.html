@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEET</title>
+    <link rel="icon" href="img/favicon-32x32.png" type="image/png" sizes="32x32">
+
+
+    <!-- Website ke Description ke liye Meta Tag -->
+    <meta name="description" content="Find and download previous year question papers for schools, colleges, and universities. Free PDF downloads for all courses and exams.">
+
+    <!-- Keywords ke liye Meta Tag -->
+    <meta name="keywords" content="school question papers, college question papers, university question papers, solved papers, previous year papers, BSc question papers, engineering question papers, exam papers download">
+
+    <!-- Website Author ke liye Meta Tag -->
+    <meta name="author" content="Your Website Name">
+
+    <!-- Charset Set Karne ke liye Meta Tag -->
+    <meta charset="UTF-8">
+
+    <!-- Responsive Design ke liye Meta Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Robots Tag (Search Engines ko Batane ke liye) -->
+    <meta name="robots" content="index, follow">
+
+    <!-- Social Media Sharing ke liye Open Graph Tags -->
+    <meta property="og:title" content="School, College, University Question Papers - Download & View">
+    <meta property="og:description" content="Free PDFs of previous year question papers for schools, colleges, and universities. Download and view easily.">
+    <meta property="og:image" content="URL_to_your_image.jpg">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tag -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="School, College, University Question Papers - Download & View">
+    <meta name="twitter:description" content="Free PDFs of previous year question papers for schools, colleges, and universities.">
+    <meta name="twitter:image" content="URL_to_your_image.jpg">
+
+    <!-- PDF.js library ko include karna -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+   
+</head>
+<!--style.css add-->
+<link rel="stylesheet" href="style.css">
+<body>
+    <header><h1> NEET</h1></header>
+
+    <div class="container">
+        <!-- San 2022 Row -->
+        <div class="san-row">
+            <div onclick="showSemesters(2018)" id="san-2018"> 2018</div>
+            <div onclick="showSemesters(2019)" id="san-2019"> 2019</div>
+            <div onclick="showSemesters(2020)" id="san-2020"> 2020</div>
+           
+        </div>
+
+        <!-- Semester Columns for selected year -->
+        <div id="semester-container" class="semester-container"></div>
+
+        <!-- Subject Links for selected semester -->
+        <div id="subject-links" class="subject-links"></div>
+
+        <!-- PDF Viewer and Download Button -->
+        <div id="pdf-viewer"></div>
+        <a id="download-btn" href="" download>Download PDF</a>
+    </div>
+
+    <script>
+         // PDF data for Semesters and Subjects
+         const pdfData = {
+            2018: {
+                1: {
+                    'neet-question-paper-set-aa-2018.pdf': 'JEE/NEET/18/neet-question-paper-set-aa-2018.pdf',
+                    'neet-question-paper-set-bb-2018.pdf': 'JEE/NEET/18/neet-question-paper-set-bb-2018.pdf',
+                    'neet-question-paper-set-cc-2018.pdf': 'JEE/NEET/18/neet-question-paper-set-cc-2018.pdf',
+                    'neet-question-paper-set-dd-2018.pdf': 'JEE/NEET/18/neet-question-paper-set-dd-2018.pdf',
+                    'neet-question-paper-set-ee-2018.pdf': 'JEE/NEET/18/neet-question-paper-set-ee-2018.pdf',
+                    'neet-question-paper-set-ff-2018.pdf': 'JEE/NEET/18/neet-question-paper-set-ff-2018.pdf',
+                    'neet-question-paper-set-gg-2018.pdf': 'JEE/NEET/18/neet-question-paper-set-gg-2018.pdf',
+                    'neet-question-paper-set-hh-2018.pdf': 'JEE/NEET/18/neet-question-paper-set-hh-2018.pdf',
+                    'neet-question-paper-set-kk-2018.pdf': 'JEE/NEET/18/neet-question-paper-set-kk-2018.pdf',
+                    'neet-question-paper-set-ll-2018.pdf': 'JEE/NEET/18/neet-question-paper-set-ll-2018.pdf',
+                    'neet-question-paper-set-mm-2018.pdf': 'JEE/NEET/18/neet-question-paper-set-mm-2018.pdf',
+                    'neet-question-paper-set-nn-2018.pdf': 'JEE/NEET/18/neet-question-paper-set-nn-2018.pdf',
+                    'neet-question-paper-set-pp-2018.pdf': 'JEE/NEET/18/neet-question-paper-set-pp-2018.pdf',
+                    'neet-question-paper-set-qq-2018.pdf': 'JEE/NEET/18/neet-question-paper-set-qq-2018.pdf',
+                    'neet-question-paper-set-rr-2018.pdf': 'JEE/NEET/18/neet-question-paper-set-rr-2018.pdf',
+                    'neet-question-paper-set-ss-2018.pdf': 'JEE/NEET/18/neet-question-paper-set-ss-2018.pdf',
+                    'neet-question-paper-set-ww-2018.pdf': 'JEE/NEET/18/neet-question-paper-set-ww-2018.pdf',
+                    'neet-question-paper-set-xx-2018.pdf': 'JEE/NEET/18/neet-question-paper-set-xx-2018.pdf',
+                    'neet-question-paper-set-yy-2018.pdf': 'JEE/NEET/18/neet-question-paper-set-yy-2018.pdf',
+                    'neet-question-paper-set-zz-2018.pdf': 'JEE/NEET/18/neet-question-paper-set-zz-2018.pdf',
+                   
+
+                }
+
+            },
+            2019: {
+                1: {
+                    'neet-question-paper-set-g1-2019.pdf': 'JEE/NEET/19/neet-question-paper-set-g1-2019.pdf',
+                    'neet-question-paper-set-h1-2019.pdf': 'JEE/NEET/19/neet-question-paper-set-h1-2019.pdf',
+                    'neet-question-paper-set-p1-2019.pdf': 'JEE/NEET/19/neet-question-paper-set-p1-2019.pdf',
+                    'neet-question-paper-set-p2-2019.pdf': 'JEE/NEET/19/neet-question-paper-set-p2-2019.pdf',
+                    'neet-question-paper-set-p5-2019.pdf': 'JEE/NEET/19/neet-question-paper-set-p5-2019.pdf',
+                    'neet-question-paper-set-q1-2019.pdf': 'JEE/NEET/19/neet-question-paper-set-q1-2019.pdf',
+                    'neet-question-paper-set-q2-2019.pdf': 'JEE/NEET/19/neet-question-paper-set-q2-2019.pdf',
+                    'neet-question-paper-set-q6-2019.pdf': 'JEE/NEET/19/neet-question-paper-set-q6-2019.pdf',
+                    'neet-question-paper-set-r1-2019.pdf': 'JEE/NEET/19/neet-question-paper-set-r1-2019.pdf',
+                    'neet-question-paper-set-r3-2019.pdf': 'JEE/NEET/19/neet-question-paper-set-r3-2019.pdf',
+                    'neet-question-paper-set-s1-2019.pdf': 'JEE/NEET/19/neet-question-paper-set-s1-2019.pdf',
+                    'neet-question-paper-set-s2-2019.pdf': 'JEE/NEET/19/neet-question-paper-set-s2-2019.pdf',
+                    'neet-question-paper-set-s6-2019.pdf': 'JEE/NEET/19/neet-question-paper-set-s6-2019.pdf',
+                   
+                    
+                }
+
+            },
+            2020: {
+                1: {
+                    'neet-2020-answer-sheet-sets-e1-e2-e3-f1-f2-f3-g1-g2-g3-h1-h2-h3.pdf': 'JEE/NEET/20/neet-2020-answer-sheet-sets-e1-e2-e3-f1-f2-f3-g1-g2-g3-h1-h2-h3.pdf',
+                    '20/neet-question-paper-set-e2-ankha-2020.pdf': 'JEE/NEET/20/neet-question-paper-set-e2-ankha-2020.pdf',
+                    'neet-question-paper-set-e4-hakan-2020.pdf': 'JEE/NEET/20/neet-question-paper-set-e4-hakan-2020.pdf',
+                    'neet-question-paper-set-f2-ankha-2020.pdf': 'JEE/NEET/20/neet-question-paper-set-f2-ankha-2020.pdf',
+                    'neet-question-paper-set-g2-ankha-2020.pdf': 'JEE/NEET/20/neet-question-paper-set-g2-ankha-2020.pdf',
+                    'neet-question-paper-set-h2-ankha-2020.pdf': 'JEE/NEET/20/neet-question-paper-set-h2-ankha-2020.pdf',
+                    
+                }
+
+            },
+          
+            
+        
+        
+        };
+
+
+       
+    </script>
+     <!--script add-->
+     <script src="school.js"></script>
+
+     
+</body>
+</html>
